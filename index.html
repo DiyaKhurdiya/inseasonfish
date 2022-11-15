@@ -2,57 +2,97 @@
 
 <html lang="en">
 
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="index.css">
-  <noscript>Sorry, your browser does not have JavaScript enabled!</noscript>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/particlesjs/2.2.3/particles.min.js"
-    integrity="sha512-jq8sZI0I9Og0nnZ+CfJRnUzNSDKxr/5Bvha5bn7AHzTnRyxUfpUArMzfH++mwE/hb2efOo1gCAgI+1RMzf8F7g=="
-    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-  <script src="index.js" defer></script>
-  <title>Fish</title>
-</head>
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous">
+    <link rel="stylesheet" href="index.css">
+    <noscript>Sorry, your browser does not have JavaScript enabled!</noscript>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+      crossorigin="anonymous"></script>
+    <script
+      src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/particlesjs/2.2.3/particles.min.js"
+      integrity="sha512-jq8sZI0I9Og0nnZ+CfJRnUzNSDKxr/5Bvha5bn7AHzTnRyxUfpUArMzfH++mwE/hb2efOo1gCAgI+1RMzf8F7g=="
+      crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="index.js" defer></script>
+    <title>Fish</title>
+  </head>
 
-<body>
-  
-    <div class ="container">
-        <img class="image" src="sharkPoster_header_01.jpg" alt="bg">
-      <div><img class="image1" src="sharker_header_text.png" alt="Header"></div>
-      <div ><h3 class="head">ABOUT    </h3> <h3 class="head1">                      CONTACT US</h3></div>
-      <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed
-        diam nonummy nibh euismod tincidunt ut laoreet dolore magna
+  <body>
+
+    <div class="container-fluid p-0">
+      <!-- Navbar -->
+      <div class="bg-image image">
+      <div class="navbar navbar-expand-lg bg-transparant">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+          data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent" aria-expanded="false"
+          aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav m-2">
+            <li class="nav-item mx-lg-3">
+              <a class="nav-link">
+                About Us
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link">
+                Contact
+              </a>
+            </li>
+          </div>
+        </div>
+
+        <div>
+        <img class="image1" src="sharker_header_text.png" alt="Header">
+         <p class="text-break">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed
+          diam nonummy nibh euismod tincidunt ut laoreet dolore magna
+
+          aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nos-
+          trud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex
+        </p>
+        <div class="first-page-offset"></div> 
+        </div>
         
-        aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nos-
-        trud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex</p>
-        <div><img class="spinner" src="Spinner-Shark-01.png" alt="Spinner-Shark"></div>
-        <div><img class="bull" src="Bull-Shark-01.png" alt="Bull-Shark"></div>
-        <div class="first-page-offset">
+          
       </div>
-      </div>
-    
-
-    <div id="ocean-container">
-      <div class="sunlight-zone">
-       
+      <div class="container-fluid p-0" id="ocean-container">
+        <div class="depth-line"><span id="depth">0</span> METERS DEEP</div>
+         <div class="sunlight-zone"> 
         <div class="zone-container"><span class="zone"></span></div>
+       <div class="row justify-content start">
+          <div class="col-6"><img class="img" src="./Bull-Shark-01.png"></img></div>
       </div>
+      <div class="row justify-content-end">
+        <div class="col-6"><img class="img float-end" src="./Spinner-Shark-01.png"></img></div>
+      </div>
+      </div>
+      
       <div class="twilight-zone">
         <div class="zone-container"><span class="zone">TWILIGHT ZONE 200m</span></div>
       </div>
       <div class="midnight-zone">
         <div class="zone-container"><span class="zone">MIDNIGHT ZONE 1000m</span></div>
       </div>
-      <div class="abyssal-zone">
+      <!-- <div class="abyssal-zone">
         <div class="zone-container"><span class="zone">ABYSSAL ZONE 4000m</span></div>
       </div>
       <div class="hadal-zone">
         <div class="zone-container"><span class="zone">HADAL ZONE 6000m</span></div>
-      </div>
-      <div class="depth-line"><span id="depth">0</span> METERS DEEP</div>
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1237.08 15">
+      </div> -->
+      
+      <svg class="p-0 m-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1237.08 15">
         <defs>
           <style>
             .cls-1 {
@@ -70,12 +110,13 @@
           </g>
         </g>
       </svg>
-    </div>
 
     <div class="ocean-bottom">
       Sasta Footer
-    </div>
+    </div> 
+      </div>
+    </div>    
   </div>
-</body>
+    </body>
 
-</html>
+  </html>

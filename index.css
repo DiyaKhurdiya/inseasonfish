@@ -1,84 +1,72 @@
+/* @media screen and (max-width: 768px) {
+ 
+.image1 {
+  position: relative;
+  width: 70vw;
+}
+ 
+} */
+
 body {
   margin: 0;
   padding: 0;
   font-family: Roboto, sans-serif;
   overflow-y: auto;
   overflow-x: hidden;
+}
+
+.navbar{
+  z-index: 10;
+}
+
+.navbar a{
+  color: #0e0a01;
+  /* font-weight: 500; */
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 15px;
+}
+
+.navbar a:hover{
+  color: white;
 
 }
 
+
 .image {
-  /* display: block; */
-  /* background-image: url('./sharkPoster_header_01.jpg'); */
-  height: 100%;
-  width: 100%;
+  /* display: inline; */
+  background-image: url('./sharkPoster_header_01.jpg');
+  height: 80vh;
+  max-width: 100%;
+  background-size: cover;
+  background-repeat: no-repeat;
   position: relative;
- 
-  
 }
 
 .image1 {
-  position: absolute;
+  position: relative;
   width: 50%;
-  top: 138px;
-  left: 30px;
+  top: 40px;
+  left: 20px;
   
 }
-
-.head{
-  color: #2b2926;
-  top: 0px;
-  left: 70px;
-  z-index: 2;
-  position: absolute;
-  font-family
-  :'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  font-weight:normal;
-  display: flex;
-
-  
-}
-
-.head1{
-  color: #2b2926;
-  top: 0px;
-  left: 150px;
-  z-index: 2;
-  position: absolute;
-  font-family
-  :'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  font-weight:normal;
-  
-}
-
 
 p {
-  position: absolute;
-  top: 360px;
+  position: relative;
+  top: 50px;
+  left: 100px;
   font-size: 1.1rem;
-  margin-left: 120px;
-  margin-right: 700px;
+  /* margin-left: 120px; */
+  width: 40vw;
+  /* margin-right: 700px; */
   font-family: 'Times New Roman', Times, serif;
   
 }
+
 .first-page-offset div{
   display: flex;
   justify-content: center;
   align-items: center;
 }
-
-
-.about {
-  position: relative;
-  top: 30px;
-  background-color: #4CAF50;
-  border: none;
-  color: white;
-  
-}
-
-
-
 
 .depth-line {
   text-align: center;
@@ -90,53 +78,36 @@ p {
   font-size: 28px;
   transition: opacity .3s ease-in-out;
   opacity: 0;
+  color: white;
 }
 
-#ocean-container {
-  display: grid;
-  color: white;
-  background: rgb(0 0 0);
-  
-  
-}
 
 .sunlight-zone {
-  height: 4000px;
-  background-image:  linear-gradient(180deg, #04738F, #0e0a01);
-  position: absolute;
+  height: 3320px;
+  background-image:  linear-gradient(180deg, #50a4ac, #0e0a01);
+  /* position: absolute; */
   width: 100%;
-  top: 1130px;
- 
-}
-
-.spinner{
-  width: 35%;
-  position: absolute;
-  top: 560px;
-  left: 40px;
-}
-.bull{
-  width: 45%;
-  position: absolute;
-  top: 480px;
-  left: 540px;
+  /* top: 1130px;  */
 }
 
 .twilight-zone{
+  background-color: #0e0a01;
   height: 13600px;
-  position: relative;
-  top: 2550px;
+  /* position: relative; */
+  /* top: 2550px; */
 }
 .zone {
  font-size: 2rem;
+ color: white;
 }
 .midnight-zone{
+  background-color: #0e0a01;
   height: 51000px;
-  position: relative;
-  top: 2550px;
+  /* position: relative; */
+  /* top: 2550px; */
 }
 
-.abyssal-zone{
+/* .abyssal-zone{
   height: 36600px;
   position: relative;
   top: 2555px;
@@ -144,13 +115,17 @@ p {
 
 .hadal-zone{
   height: 66780px;
+} */
+
+.img{
+  height: 350px;
+  width: 700px;
 }
 
 .ocean-bottom {
   background: linear-gradient(180deg, #ede5ce, #b5ad9a);
-  height: 100vh;
+  height: 40vh;
   width: 100%;
-  position: relative;
 }
 
 .zone-container{
