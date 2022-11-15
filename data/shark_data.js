@@ -1,5 +1,3 @@
-// keep sharkData and PopUp() at one location
-
 const sharkData = [
   {
     name: "SLENDER WEASEL",
@@ -718,10 +716,3 @@ const sharkData = [
     scale: "3.65",
   },
 ];
-
-function PopUp(div_ID) {
-  // select shark according to div_ID
-  const shark = sharkData[div_ID];
-  console.log(shark);
-  // render shark.data as HTML pop-up
-}
