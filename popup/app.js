@@ -722,6 +722,19 @@ const sharkData = [
 function PopUp(div_ID) {
   // select shark according to div_ID
   const shark = sharkData[div_ID];
-  console.log(shark);
-  // render shark.data as HTML pop-up
+
+  // get PopUp renderer: id = div_ID + 100
+  var pop_ID = parseInt(div_ID) + 100;
+  var renderer = document.getElementById(`${pop_ID}`);
+
+  // set data: use class_names for selects & renders
+  renderer.querySelector(".name").innerHTML = shark.name;
+  renderer.querySelector(".sci_name").innerHTML = shark.sci_name;
+  renderer.querySelector(".range").innerHTML = shark.range;
+  renderer.querySelector(".size").innerHTML = shark.size;
+  renderer.querySelector(".habitat").innerHTML = shark.habitat;
+  renderer.querySelector(".fun_fact").innerHTML = shark.fun_fact;
+
+  // on_touch: DOM gets sharkData; left: render Modal 
+  // TODO: create PopUp Modal, based on DOM layout
 }
