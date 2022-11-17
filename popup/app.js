@@ -735,6 +735,15 @@ function PopUp(div_ID) {
   renderer.querySelector(".habitat").innerHTML = shark.habitat;
   renderer.querySelector(".fun_fact").innerHTML = shark.fun_fact;
 
-  // on_touch: DOM gets sharkData; left: render Modal 
-  // TODO: create PopUp Modal, based on DOM layout
+  // renderer renders
+  renderer.hidden = false;
 }
+
+function ClosePop(close_ID) {
+  var pop_ID = event.target.parentElement.id;
+  document.getElementById(`${pop_ID}`).hidden = true;
+}
+
+// TODO: touch non_div_space –> ClosePop()
+// TODO: PopUp() HTML & CSS layout; only change innerHTML
+// TODO: integration
