@@ -44,19 +44,19 @@ body {
 
 .image1 {
   position: relative;
-  width: 50%;
-  top: 40px;
+  width: 50vw;
+  top: 100px;
   left: 20px;
   
 }
 
 p {
   position: relative;
-  top: 50px;
+  top: 120px;
   left: 100px;
-  font-size: 1.1rem;
+  font-size: 1.5rem;
   /* margin-left: 120px; */
-  width: 40vw;
+  width: 60vw;
   /* margin-right: 700px; */
   font-family: 'Times New Roman', Times, serif;
   
