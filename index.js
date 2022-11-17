@@ -19,26 +19,32 @@ $(document).scroll(() => {
 
 const Data = [{
   "range":50,
+  "actualRange":700,
   "Image":"./assets/Dusky-Shark-01.svg",
 },
 {
   "range":400,
+  "actualRange":900,
   "Image":"./assets/Dwarf-Gulper-Shark-01.svg",
 },
 {
   "range":1200,
+  "actualRange":10,
   "Image":"./assets/Black-Spot-Shark-01.svg",
 },
 {
   "range":850,
+  "actualRange":1200,
   "Image":"./assets/Blue-Shark-01.svg",
 },
 {
   "range":1800,
+  "actualRange":100,
   "Image":"./assets/Arrowhead-Dogfish-Shark-01.svg",
 },
 {
   "range":1700,
+  "actualRange":800,
   "Image":"./assets/Arabian-Smooth-Hound-Shark-01.svg",
 },
 ];
@@ -49,6 +55,7 @@ function displayShark(sharkData){
   for (let i = 0; i < sharkData.length; i++) {
     const shark = sharkData[i];
     const sharkRange = shark["range"];
+    const sharkHeight = shark["actualRange"];
 
     const rand_one = Math.random();
     const align = (rand_one>=0.5) ? "start":"end";
@@ -59,7 +66,7 @@ function displayShark(sharkData){
     
     sharkDiv.id = i;
     sharkDiv.classList.add("row","justify-content-"+align);
-    sharkDiv.setAttribute("style","top:"+sharkRange+"px")
+    sharkDiv.setAttribute("style","top:"+sharkHeight+"px")
     sharkDivCol.classList.add("col-6");
     sharkImg.classList.add("img")
     sharkImg.setAttribute("src",shark["Image"]);
