@@ -4,7 +4,7 @@ const firstPageHeight = $(".first-page-offset").height()
 
 // Show depth
 $(document).scroll(() => {
-  var scrollTop = Math.ceil(($(window).scrollTop() - firstPageHeight) / 17)
+  var scrollTop = Math.ceil(($(window).scrollTop() - firstPageHeight) / 19)
   // Hide if sea level or beyond Challenger Deep
   if(scrollTop <= MIN_DEPTH || scrollTop >= MAX_DEPTH){
     scrollTop = (scrollTop >= MAX_DEPTH)? MAX_DEPTH : MIN_DEPTH;
@@ -17,7 +17,13 @@ $(document).scroll(() => {
 })
 
 
-const Data = [{
+const Data = [
+  {
+    "range":10,
+    "actualRange":50,
+    "Image":"./assets/Spinner-Shark-01.svg",
+  },
+  {
   "range":50,
   "actualRange":700,
   "Image":"./assets/Dusky-Shark-01.svg",

@@ -82,7 +82,7 @@ p {
 #sunlight-zone {
   height: 3320px;
   /* background-color: transparent; */
-  background-image:  linear-gradient(180deg, #50a4ac, #0e0a01);
+  background-image:  linear-gradient(180deg, #459DA9, #153338);
   /* position: absolute; */
   width: 100%;
   /* top: 1130px;  */
@@ -90,6 +90,7 @@ p {
 
 #twilight-zone{
   background-color: #0e0a01;
+  background-image:  linear-gradient(180deg, #153338, rgb(0, 0, 0) );
   height: 13600px;
   /* position: relative; */
   /* top: 2550px; */
