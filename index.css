@@ -7,6 +7,13 @@
  
 } */
 
+/* Total height of Ocean Container - 67824px
+If number of sharks = 71
+There is 955.2676px or 955px for each shark
+
+Accounting some free space, say the space of 71 more sharks
+Each division required will have 477.6338px or 478px */
+
 body {
   margin: 0;
   padding: 0;
@@ -15,27 +22,12 @@ body {
   overflow-x: hidden;
 }
 
-.navbar{
-  z-index: 10;
-}
-
-.navbar a{
-  color: #0e0a01;
-  /* font-weight: 500; */
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
-  font-size: 15px;
-}
-
-.navbar a:hover{
-  color: white;
-
-}
-
 
 .image {
   /* display: inline; */
-  background-image: url('./sharkPoster_header_01.jpg');
-  height: 80vh;
+  background-image: url('./assets/sharkPoster_header_01.jpg');
+  /* height: 1902px; */
+  height: 1000px;
   max-width: 100%;
   background-size: cover;
   background-repeat: no-repeat;
@@ -48,6 +40,11 @@ body {
   top: 100px;
   left: 20px;
   
+}
+
+.home-container{
+  position: relative;
+  top: 120px;
 }
 
 p {
@@ -82,15 +79,16 @@ p {
 }
 
 
-.sunlight-zone {
+#sunlight-zone {
   height: 3320px;
+  /* background-color: transparent; */
   background-image:  linear-gradient(180deg, #50a4ac, #0e0a01);
   /* position: absolute; */
   width: 100%;
   /* top: 1130px;  */
 }
 
-.twilight-zone{
+#twilight-zone{
   background-color: #0e0a01;
   height: 13600px;
   /* position: relative; */
@@ -100,25 +98,19 @@ p {
  font-size: 2rem;
  color: white;
 }
-.midnight-zone{
+#midnight-zone{
   background-color: #0e0a01;
   height: 51000px;
   /* position: relative; */
   /* top: 2550px; */
 }
 
-/* .abyssal-zone{
-  height: 36600px;
-  position: relative;
-  top: 2555px;
+.row{
+  position: relative !important;
 }
 
-.hadal-zone{
-  height: 66780px;
-} */
-
 .img{
-  height: 350px;
+  height: 478px;
   width: 700px;
 }
 
