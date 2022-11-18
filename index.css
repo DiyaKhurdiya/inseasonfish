@@ -42,6 +42,41 @@ body {
   
 }
 
+.wf1 {
+  position: relative;
+  width: 15vw;
+  top: 100px;
+  left: 1020px;
+  
+}
+
+.wf2 {
+  position: relative;
+  width: 16vw;
+  top: 290px;
+  
+  
+}
+
+.wf3 {
+  position: relative;
+  width: 26vw;
+  top: 10px;  
+  left: 1025px;
+}
+
+.line {
+  position: absolute;
+  left: 5px;
+  top: 800px;
+  height: 80%;
+}
+.line1 {
+  position: absolute;
+  left: 14px;
+  top: 1247px;
+  height: 300%;
+}
 .home-container{
   position: relative;
   top: 120px;

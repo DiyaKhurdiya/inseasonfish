@@ -17,10 +17,14 @@ $(document).scroll(() => {
 })
 
 
-const Data = [
+const Data = [  {
+  "range":5,
+  "actualRange":5,
+  "Image":"./assets/Black-Spot-Shark-01.svg",
+},
   {
-    "range":10,
-    "actualRange":50,
+    "range":1,
+    "actualRange":5,
     "Image":"./assets/Spinner-Shark-01.svg",
   },
   {
