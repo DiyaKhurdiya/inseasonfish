@@ -68,13 +68,13 @@ body {
 .line {
   position: absolute;
   left: 5px;
-  top: 800px;
+  top: 785px;
   height: 80%;
 }
 .line1 {
   position: absolute;
-  left: 14px;
-  top: 1247px;
+  left: 13px;
+  top: 1252px;
   height: 300%;
 }
 .home-container{
