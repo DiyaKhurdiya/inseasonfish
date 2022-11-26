@@ -739,11 +739,32 @@ function PopUp(div_ID) {
   renderer.hidden = false;
 }
 
-function ClosePop(close_ID) {
+function ClosePop() {
   var pop_ID = event.target.parentElement.id;
   document.getElementById(`${pop_ID}`).hidden = true;
 }
 
-// TODO: touch non_div_space –> ClosePop()
-// TODO: PopUp() HTML & CSS layout; only change innerHTML
-// TODO: integration
+document.addEventListener(
+  "click",
+  function (event) {
+    // if event doesn't have the correct selector, end task
+    if (
+      event.target.matches("popup") ||
+      event.target.closest(".popup") ||
+      event.target.matches("trigger") ||
+      event.target.closest(".trigger")
+    ) {
+      return;
+    }
+    for (let element of document.getElementsByClassName("popup")) {
+      if (element.hidden == false) {
+        element.hidden = true;
+      }
+    }
+  },
+  false
+);
+
+// TODO: FIX: touch div_space closes PopUp [few areas]
+// TODO: HTML & CSS: use better
+// TODO: Integration
