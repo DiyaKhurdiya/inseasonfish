@@ -3,7 +3,7 @@
 }
 
 .popup {
-  background-color: rgb(71, 172, 222);
+  background-color: #53A5AD;
   color: black;
   position: relative;
   padding: 2%;
@@ -42,7 +42,7 @@
   grid-column-end: 9;
   grid-row-start: 1;
   grid-row-end: 2;
-  color: rgb(71, 172, 222);
+  color: #53A5AD;
   height: 25px;
   width: 25px;
   background-color: black;
@@ -60,6 +60,8 @@
   grid-row-end: 3;
   justify-content: center;
   display: flex;
+  
+  
 }
 
 .name {
