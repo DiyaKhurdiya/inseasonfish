@@ -1,0 +1,193 @@
+[hidden] {
+  display: none !important;
+}
+
+.popup {
+  background-color: #53A5AD;
+  color: black;
+  position: relative;
+  padding: 2%;
+  margin-top: 1%;
+  border: 1px black;
+  border-radius: 20px;
+  height: 60vh;
+  width: 85%;
+  row-gap: 0.5px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+
+  display: grid;
+  grid-template-columns: 2% 5% 45% 20.5% 17.5% 4% 0.5% 2% 3.5%;
+  grid-template-rows: 2% 40% 2% 8% 8% 4% 12% 4% 18% 2%;
+  grid-template-areas:
+    "void void void void void void void close void"
+    "void void image image image void void void void"
+    "void void void void void void void void void"
+    "void name name range_hard size_hard size_hard void void void"
+    "void sci_name sci_name range size size void void void"
+    "void hab_har hab_har hab_har hab_har hab_har void void void"
+    "void hab hab hab hab hab void void void"
+    "void fun_hard fun_hard fun_hard fun_hard fun_hard void void void"
+    "void fun fun fun fun fun void void void"
+    "void void void void void void void void void";
+}
+
+.void {
+  opacity: 0;
+}
+
+.close {
+  grid-column-start: 8;
+  grid-column-end: 9;
+  grid-row-start: 1;
+  grid-row-end: 2;
+  color: #53A5AD;
+  height: 25px;
+  width: 25px;
+  background-color: black;
+  border-radius: 50%;
+  display: inline-block;
+  text-align: center;
+  vertical-align: center;
+  line-height: 25px;
+}
+
+.image {
+  grid-column-start: 3;
+  grid-column-end: 6;
+  grid-row-start: 2;
+  grid-row-end: 3;
+  justify-content: center;
+  display: flex;
+  
+  
+}
+
+.name {
+  grid-column-start: 2;
+  grid-column-end: 4;
+  grid-row-start: 4;
+  grid-row-end: 5;
+  border-top: solid 0.5px black;
+  border-left: solid 0.5px black;
+  border-right: solid 0.5px black;
+  font-weight: bold;
+  padding-left: 10px;
+  padding-top: 7px;
+}
+
+.range_hard {
+  padding-top: 7px;
+  padding-left: 7px;
+  grid-column-start: 4;
+  grid-column-end: 5;
+  grid-row-start: 4;
+  grid-row-end: 5;
+  border-top: solid 0.5px black;
+  border-left: solid 0.5px black;
+  border-right: solid 0.5px black;
+}
+
+.size_hard {
+  padding-top: 7px;
+  padding-left: 7px;
+  grid-column-start: 5;
+  grid-column-end: 7;
+  grid-row-start: 4;
+  grid-row-end: 5;
+  border-top: solid 0.5px black;
+  border-left: solid 0.5px black;
+  border-right: solid 0.5px black;
+}
+
+.sci_name {
+  padding-top: 7.5px;
+  padding-left: 10px;
+  grid-column-start: 2;
+  grid-column-end: 4;
+  grid-row-start: 5;
+  grid-row-end: 6;
+  font-size: small;
+  border-bottom: solid 0.5px black;
+  border-left: solid 0.5px black;
+  border-right: solid 0.5px black;
+}
+
+.range {
+  padding-top: 7.5px;
+  padding-left: 7px;
+  grid-column-start: 4;
+  grid-column-end: 5;
+  grid-row-start: 5;
+  grid-row-end: 6;
+  font-weight: bold;
+  border-bottom: solid 0.5px black;
+  border-left: solid 0.5px black;
+  border-right: solid 0.5px black;
+}
+
+.size {
+  padding-top: 7.5px;
+  padding-left: 7px;
+  grid-column-start: 5;
+  grid-column-end: 7;
+  grid-row-start: 5;
+  grid-row-end: 6;
+  font-weight: bold;
+  border-bottom: solid 0.5px black;
+  border-left: solid 0.5px black;
+  border-right: solid 0.5px black;
+}
+
+.hab_hard {
+  padding-top: 10px;
+  padding-left: 10px;
+  grid-column-start: 2;
+  grid-column-end: 7;
+  grid-row-start: 6;
+  grid-row-end: 7;
+  border-left: solid 0.5px black;
+  border-right: solid 0.5px black;
+}
+
+.hab {
+  padding-top: 10px;
+  padding-left: 10px;
+  grid-column-start: 2;
+  grid-column-end: 7;
+  grid-row-start: 7;
+  grid-row-end: 8;
+  border-left: solid 0.5px black;
+  border-right: solid 0.5px black;
+}
+
+.fun_hard {
+  padding-top: 5px;
+  padding-left: 10px;
+  grid-column-start: 2;
+  grid-column-end: 7;
+  grid-row-start: 8;
+  grid-row-end: 9;
+  border-left: solid 0.5px black;
+  border-right: solid 0.5px black;
+}
+
+.fun {
+  padding-top: 5px;
+  padding-left: 10px;
+  grid-column-start: 2;
+  grid-column-end: 7;
+  grid-row-start: 9;
+  grid-row-end: 10;
+  border-bottom: solid 0.5px black;
+  border-left: solid 0.5px black;
+  border-right: solid 0.5px black;
+}
+
+.photo {
+  max-width: 100%;
+  max-height: 100%;
+  display: block;
+  height: auto;
+}
