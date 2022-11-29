@@ -7,6 +7,13 @@
  
 } */
 
+/* Total height of Ocean Container - 67824px
+If number of sharks = 71
+There is 955.2676px or 955px for each shark
+
+Accounting some free space, say the space of 71 more sharks
+Each division required will have 477.6338px or 478px */
+
 body {
   margin: 0;
   padding: 0;
@@ -15,27 +22,12 @@ body {
   overflow-x: hidden;
 }
 
-.navbar{
-  z-index: 10;
-}
-
-.navbar a{
-  color: #0e0a01;
-  /* font-weight: 500; */
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
-  font-size: 15px;
-}
-
-.navbar a:hover{
-  color: white;
-
-}
-
 
 .image {
   /* display: inline; */
-  background-image: url('./sharkPoster_header_01.jpg');
-  height: 80vh;
+  background-image: url('./assets/sharkPoster_header_01.jpg');
+  /* height: 1902px; */
+  height: 1000px;
   max-width: 100%;
   background-size: cover;
   background-repeat: no-repeat;
@@ -44,19 +36,59 @@ body {
 
 .image1 {
   position: relative;
-  width: 50%;
-  top: 40px;
+  width: 50vw;
+  top: 100px;
   left: 20px;
   
 }
 
+.wf1 {
+  position: relative;
+  width: 15vw;
+  top: 100px;
+  left: 1020px;
+  
+}
+
+.wf2 {
+  position: relative;
+  width: 16vw;
+  top: 290px;
+  
+  
+}
+
+.wf3 {
+  position: relative;
+  width: 26vw;
+  top: 10px;  
+  left: 1025px;
+}
+
+.line {
+  position: absolute;
+  left: 5px;
+  top: 785px;
+  height: 80%;
+}
+.line1 {
+  position: absolute;
+  left: 13px;
+  top: 1252px;
+  height: 300%;
+}
+.home-container{
+  position: relative;
+  top: 120px;
+}
+
 p {
   position: relative;
-  top: 50px;
+  top: 120px;
   left: 100px;
-  font-size: 1.1rem;
+  font-size: 1.5rem;
   /* margin-left: 120px; */
-  width: 40vw;
+  width: 60vw;
   /* margin-right: 700px; */
   font-family: 'Times New Roman', Times, serif;
   
@@ -82,16 +114,18 @@ p {
 }
 
 
-.sunlight-zone {
+#sunlight-zone {
   height: 3320px;
-  background-image:  linear-gradient(180deg, #50a4ac, #0e0a01);
+  /* background-color: transparent; */
+  background-image:  linear-gradient(180deg, #459DA9, #153338);
   /* position: absolute; */
   width: 100%;
   /* top: 1130px;  */
 }
 
-.twilight-zone{
+#twilight-zone{
   background-color: #0e0a01;
+  background-image:  linear-gradient(180deg, #153338, rgb(0, 0, 0) );
   height: 13600px;
   /* position: relative; */
   /* top: 2550px; */
@@ -100,25 +134,19 @@ p {
  font-size: 2rem;
  color: white;
 }
-.midnight-zone{
+#midnight-zone{
   background-color: #0e0a01;
   height: 51000px;
   /* position: relative; */
   /* top: 2550px; */
 }
 
-/* .abyssal-zone{
-  height: 36600px;
-  position: relative;
-  top: 2555px;
+.row{
+  position: relative !important;
 }
 
-.hadal-zone{
-  height: 66780px;
-} */
-
 .img{
-  height: 350px;
+  height: 478px;
   width: 700px;
 }
 
