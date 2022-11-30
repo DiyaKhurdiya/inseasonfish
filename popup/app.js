@@ -831,6 +831,3 @@ document.addEventListener(
   },
   false
 );
-
-// TODO: CSS Advanced Touches
-// TODO: Integrate to Project as per index.html
