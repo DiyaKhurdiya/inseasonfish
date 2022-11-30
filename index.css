@@ -22,7 +22,7 @@ body {
   overflow-x: hidden;
 }
 
-.image {
+.imag {
   /* display: inline; */
   background-image: url("./assets/sharkPoster_header_01.jpg");
   /* height: 1902px; */
@@ -37,7 +37,7 @@ body {
   position: relative;
   width: 50vw;
   top: 100px;
-  left: 20px;
+  left: 46px;
 }
 
 .wf1 {
@@ -62,15 +62,15 @@ body {
 
 .line {
   position: absolute;
-  left: 5px;
-  top: 785px;
-  height: 80%;
+  left: 34px;
+  top: 820px;
+  height: 70%;
 }
 .line1 {
   position: absolute;
-  left: 13px;
-  top: 1252px;
-  height: 300%;
+  left: 40px;
+  top: 1210px;
+  height: 270%;
 }
 .home-container {
   position: relative;
@@ -80,7 +80,7 @@ body {
 p {
   position: relative;
   top: 120px;
-  left: 100px;
+  left: 105px;
   font-size: 1.5rem;
   /* margin-left: 120px; */
   width: 60vw;

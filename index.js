@@ -963,7 +963,7 @@ function PopUp(div_ID) {
   renderer.querySelector(".hab").innerHTML = shark.habitat;
   renderer.querySelector(".fun").innerHTML = shark.fun_fact;
 
-  const photo_location = "./assets/" + shark.image_src;
+  const photo_location = "./popup/assets/" + shark.image_src;
   const photo_ID = parseInt(div_ID) + 200;
   document.getElementById(`${photo_ID}`).src = photo_location;
 
