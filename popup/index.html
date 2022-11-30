@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- INTEGRATE: style.css & app.js to Project CSS and JS ✅ -->
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script type="text/javascript" src="app.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <title>InSeasonFish</title>
+</head>
+
+<body>
+
+    <!-- INTEGRATE: onclick="PopUp(this.id), for every div_shark; IDs [0...] ✅ -->
+    <!-- INTEGRATE: use shark_cleaned.xlxs & preserve that order ✅ -->
+    <div id="0" class="trigger" onclick="PopUp(this.id)">Shark A</div>
+
+    <!-- INTEGRATE: DOM layout for PopUp; assign IDs [100...] ✅ --> 
+    <div id="100" class="popup flex" hidden>
+        <div class="close" onclick="this.parentElement.hidden='true'">X</div>
+        <!-- INTEGRATE: photos for Sharks; assign IDs [200...] ✅ -->
+        <!-- INTEGRATE: keep Shark Photos to Project /assets folder ✅ -->
+        <div class="image3"><img class="photo" id="200" src="" alt="broken"></div>
+        <div class="name"></div>
+        <div class="sci_name"></div>
+        <div class="range_hard">RANGE</div>
+        <div class="range"></div>
+        <div class="size_hard">SIZE</div>
+        <div class="size"></div>
+        <div class="hab_hard">HABITAT</div>
+        <div class="hab"></div>
+        <div class="fun_hard">FUN FACT</div>
+        <div class="fun"></div>
+    </div>
+
+</body>
+
+</html>
