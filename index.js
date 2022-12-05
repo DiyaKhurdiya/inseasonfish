@@ -567,7 +567,7 @@ data=[
     "Origin": "Found in open ocean. In epipelagic tropical and sub-tropical waters",
     "Description": "Oceanic whitetip sharks  are one of the most threatened sharks which come under Appendix II of the CITES. They are sometimes found to hang around pilot whales.",
     "Scale": 17.39,
-    "Image": "./assets/White-Tip-Reef-Shark-01.png"
+    "Image": "./assets/White-Tip-Reef-Shark-01.svg"
   },
   {
     "Name": "Dusky shark",
