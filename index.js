@@ -701,7 +701,6 @@ for (let i = 0; i < depth_bar_height/pixels_per_meter; i=i+10) {
   if(i>0){
     const clone = marking.cloneNode()
     clone.textContent=i+" meters"
-    console.log(clone.textContent)
     clone.style.position = "absolute";
     clone.style.top=(i+(i-1)*pixels_per_meter).toString()+"px" 
     document.getElementById("depth-bar").appendChild(clone)
@@ -742,8 +741,14 @@ function displayShark(sharkData){
     const sharkDivCol = document.createElement("div");
     const sharkImg = document.createElement("img");
 <<<<<<< HEAD
+<<<<<<< HEAD
     
     sharkDiv.id = i; 
+=======
+    const sharkPopUp = document.createElement("div");
+
+    sharkDiv.id=i;
+>>>>>>> 7de124c22e8a77a67969d558564fd37fb3d441be
 
     let align="start";
     if(i==0){
@@ -751,11 +756,14 @@ function displayShark(sharkData){
     }else if(document.getElementById(i-1).classList.contains("justify-content-start")){
       align="end"
     }
-    
-    sharkDiv.classList.add("row","justify-content-"+align, "js-scroll");
+   
+    sharkDiv.classList.add("row","justify-content-"+align) 
     sharkDivCol.classList.add("col-6");
-    sharkImg.classList.add("img")
+    sharkImg.classList.add("img","trigger");
+    sharkImg.id = i;
+    sharkImg.setAttribute("onclick","PopUp(this.id)");
     sharkImg.setAttribute("src",shark["Image"]);
+<<<<<<< HEAD
     sharkImg.setAttribute("style","top:"+sharkHeight+"px")
     
 =======
@@ -838,6 +846,14 @@ function displayShark(sharkData){
     sharkImage.appendChild(sharkPhoto);
 
 >>>>>>> main
+=======
+    sharkImg.setAttribute("data-bs-toggle","modal");
+    sharkImg.setAttribute("data-bs-target","#popUp");
+    sharkImg.setAttribute("style","top:"+sharkHeight+"px"); 
+   
+    sharkPopUp.setAttribute("id",i);    
+
+>>>>>>> 7de124c22e8a77a67969d558564fd37fb3d441be
     sharkDivCol.appendChild(sharkImg);
     sharkDiv.appendChild(sharkDivCol);
 
@@ -889,6 +905,7 @@ displayShark(Data);
 
 <<<<<<< HEAD
 displayShark(data);
+<<<<<<< HEAD
 =======
 //   TODOs:
 // - add range(?) & actualRange to shark_cleaned.xlxs & preserve order!
@@ -896,3 +913,45 @@ displayShark(data);
 // - update sharkPopData & use displayShark(sharkPopData)
 // - change PopUp photo area; too large as of today
 >>>>>>> main
+=======
+
+
+function PopUp(div_ID){
+  const shark = data[div_ID]
+
+  const renderer = document.getElementById("100");
+  
+  // set data: use class_names for selects & renders
+  renderer.querySelector(".name").innerHTML = shark["Name"] + " SHARK";
+  renderer.querySelector(".sci_name").innerHTML = shark["Scientific Name"];
+  renderer.querySelector(".range").innerHTML = shark["Range(in meters)"];
+  // renderer.querySelector(".size").innerHTML = shark[""] + " M";
+  renderer.querySelector(".hab").innerHTML = shark["Origin"];
+  renderer.querySelector(".fun").innerHTML = shark["Description"];
+
+  // get photo, HTML photo_ID & render
+  const photo_location = shark["Image"]
+  document.getElementById("200").src = photo_location;
+
+}
+// document.addEventListener(
+//   "click",
+//   function (event) {
+//     // if event doesn't have the correct selector, end task
+//     if (
+//       event.target.matches("popup") ||
+//       event.target.closest(".popup") ||
+//       event.target.matches("trigger") ||
+//       event.target.closest(".trigger")
+//     ) {
+//       return;
+//     }
+//     for (let element of document.getElementsByClassName("popup")) {
+//       if (element.hidden == false) {
+//         element.hidden = true;
+//       }
+//     }
+//   },
+//   false
+// );
+>>>>>>> 7de124c22e8a77a67969d558564fd37fb3d441be
