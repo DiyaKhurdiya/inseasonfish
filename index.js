@@ -740,15 +740,9 @@ function displayShark(sharkData){
     const sharkDiv = document.createElement("div");
     const sharkDivCol = document.createElement("div");
     const sharkImg = document.createElement("img");
-<<<<<<< HEAD
-<<<<<<< HEAD
-    
-    sharkDiv.id = i; 
-=======
     const sharkPopUp = document.createElement("div");
 
     sharkDiv.id=i;
->>>>>>> 7de124c22e8a77a67969d558564fd37fb3d441be
 
     let align="start";
     if(i==0){
@@ -763,157 +757,29 @@ function displayShark(sharkData){
     sharkImg.id = i;
     sharkImg.setAttribute("onclick","PopUp(this.id)");
     sharkImg.setAttribute("src",shark["Image"]);
-<<<<<<< HEAD
-    sharkImg.setAttribute("style","top:"+sharkHeight+"px")
-    
-=======
-
-    sharkDiv.id = String(i);
-    sharkDiv.classList.add("row", "justify-content-" + align);
-    sharkDiv.setAttribute("style", "top:" + sharkHeight + "px");
-    sharkDivCol.classList.add("col-6");
-    sharkImg.classList.add("img");
-    sharkImg.setAttribute("src", shark["Image"]);
-
-    sharkImg.setAttribute("onclick", `PopUp(${i})`);
-
-    const sharkPop = document.createElement("div");
-    sharkPop.id = String(i + 100);
-    sharkPop.classList.add("popup", "flex");
-
-    const sharkClose = document.createElement("div");
-    sharkClose.classList.add("close");
-    sharkClose.setAttribute("onclick", "this.parentElement.hidden='true'");
-    sharkClose.innerHTML = "X";
-
-    const sharkImage = document.createElement("div");
-    sharkImage.classList.add("image");
-
-    const sharkPhoto = document.createElement("img");
-    sharkPhoto.classList.add("photo");
-    sharkPhoto.id = String(i + 200);
-    sharkPhoto.setAttribute("src", "");
-    sharkPhoto.setAttribute("alt", "broken");
-
-    const sharkName = document.createElement("div");
-    sharkName.classList.add("name");
-
-    const sharkSci_Name = document.createElement("div");
-    sharkSci_Name.classList.add("sci_name");
-
-    const sharkRange_Hard = document.createElement("div");
-    sharkRange_Hard.classList.add("range_hard");
-    sharkRange_Hard.innerHTML = "RANGE";
-
-    const sharkRange = document.createElement("div");
-    sharkRange.classList.add("range");
-
-    const sharkSize_Hard = document.createElement("div");
-    sharkSize_Hard.classList.add("size_hard");
-    sharkSize_Hard.innerHTML = "SIZE";
-
-    const sharkSize = document.createElement("div");
-    sharkSize.classList.add("size");
-
-    const sharkHab_Hard = document.createElement("div");
-    sharkHab_Hard.classList.add("hab_hard");
-    sharkHab_Hard.innerHTML = "HABITAT";
-
-    const sharkHab = document.createElement("div");
-    sharkHab.classList.add("hab");
-
-    const sharkFun_Hard = document.createElement("div");
-    sharkFun_Hard.classList.add("fun_hard");
-    sharkFun_Hard.innerHTML = "FUN FACT";
-
-    const sharkFun = document.createElement("div");
-    sharkFun.classList.add("fun");
-
-    sharkPop.append(
-      sharkClose,
-      sharkImage,
-      sharkName,
-      sharkSci_Name,
-      sharkRange_Hard,
-      sharkRange,
-      sharkSize_Hard,
-      sharkSize,
-      sharkHab_Hard,
-      sharkHab,
-      sharkFun_Hard,
-      sharkFun
-    );
-    sharkImage.appendChild(sharkPhoto);
-
->>>>>>> main
-=======
     sharkImg.setAttribute("data-bs-toggle","modal");
     sharkImg.setAttribute("data-bs-target","#popUp");
     sharkImg.setAttribute("style","top:"+sharkHeight+"px"); 
    
     sharkPopUp.setAttribute("id",i);    
 
->>>>>>> 7de124c22e8a77a67969d558564fd37fb3d441be
     sharkDivCol.appendChild(sharkImg);
     sharkDiv.appendChild(sharkDivCol);
-
-    if (sharkScope >= 200 && sharkScope < 1000) {
-      document.getElementById("twilight-zone").append(sharkDiv, sharkPop);
-    } else if (sharkScope >= 1000) {
-      document.getElementById("midnight-zone").append(sharkDiv, sharkPop);
-    } else {
-      document.getElementById("sunlight-zone").append(sharkDiv, sharkPop);
+    
+    if(sharkRange>=200 && sharkRange<1000){
+      document.getElementById("twilight-zone").appendChild(sharkDiv);
+    }else if(sharkRange>=1000){
+      document.getElementById("midnight-zone").appendChild(sharkDiv);
+    }else{
+      document.getElementById("sunlight-zone").appendChild(sharkDiv);
     }
 
-    document.getElementById(`${i + 100}`).hidden = true;
+
   }
-}
+  
+};
 
-function PopUp(div_ID) {
-  const shark = sharkPopData[div_ID];
-  const pop_ID = String(parseInt(div_ID) + 100);
-  const renderer = document.getElementById(`${pop_ID}`);
-
-  renderer.querySelector(".name").innerHTML = shark.name + " SHARK";
-  renderer.querySelector(".sci_name").innerHTML = shark.sci_name;
-  renderer.querySelector(".range").innerHTML = shark.range + " M";
-  renderer.querySelector(".size").innerHTML = shark.size + " M";
-  renderer.querySelector(".hab").innerHTML = shark.habitat;
-  renderer.querySelector(".fun").innerHTML = shark.fun_fact;
-
-  const photo_location = "./popup/assets/" + shark.image_src;
-  const photo_ID = parseInt(div_ID) + 200;
-  document.getElementById(`${photo_ID}`).src = photo_location;
-
-  renderer.hidden = false;
-}
-
-document.addEventListener(
-  "click",
-  function (event) {
-    if (event.target.matches("popup") || event.target.matches("img")) {
-      return;
-    }
-    for (let element of document.getElementsByClassName("popup")) {
-      element.hidden = true;
-    }
-  },
-  false
-);
-
-displayShark(Data);
-
-<<<<<<< HEAD
 displayShark(data);
-<<<<<<< HEAD
-=======
-//   TODOs:
-// - add range(?) & actualRange to shark_cleaned.xlxs & preserve order!
-// - JSON(shark_cleaned.xlxs)
-// - update sharkPopData & use displayShark(sharkPopData)
-// - change PopUp photo area; too large as of today
->>>>>>> main
-=======
 
 
 function PopUp(div_ID){
@@ -954,4 +820,3 @@ function PopUp(div_ID){
 //   },
 //   false
 // );
->>>>>>> 7de124c22e8a77a67969d558564fd37fb3d441be
