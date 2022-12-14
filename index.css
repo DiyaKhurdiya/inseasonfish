@@ -183,7 +183,44 @@ p {
 }
 
 /* Pop-up */
+.name {
+  font-family: 'Open Sans', sans-serif;
+  font-size:larger;
+  color:#0b2531;
+}
+.range {
+  font-family: 'Open Sans', sans-serif;
+  font-size:medium;
+  color:#0b2531;
+}
+.sci_name {
+  font-size: small;
+}
+.size{
+  font-family: 'Open Sans', sans-serif;
+  font-size:medium;
+  color:#0b2531;
+}
+.hab_hard {
+  font-size: 13px;
+  padding-top: 3px;
+}
+.size_hard{
+  font-size: 13px;
+  padding-top: 3px;
 
+}
+.fun_hard{
+  font-size: 13px;
+  padding-top: 3px;
+}
+.range_hard{
+
+    font-size: 13px;
+    padding-top: 3px;
+  
+  
+}
 .modal-body {
   background-color: #53A5AD;
   padding: 10px !important;
