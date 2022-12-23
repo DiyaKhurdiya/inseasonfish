@@ -860,7 +860,7 @@ function PopUp(div_ID){
   renderer.querySelector(".name").innerHTML = shark["Name"];
   renderer.querySelector(".sci_name").innerHTML = shark["Scientific Name"];
   renderer.querySelector(".range").innerHTML = shark["Range(in meters)"];
-  renderer.querySelector(".size").innerHTML = shark["Size"] + " M";
+  renderer.querySelector(".size").innerHTML = shark["Size"] + " CM";
   renderer.querySelector(".hab").innerHTML = shark["Origin"];
   renderer.querySelector(".fun").innerHTML = shark["Description"];
   
