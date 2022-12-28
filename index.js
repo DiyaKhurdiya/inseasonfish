@@ -759,10 +759,44 @@ data=[
     "Size": 1700
   }
 ]
+
+// const showOnPx = 5000;
+// const backToTopButton = document.querySelector(".back-to-top")
+
+// const scrollContainer = () => {
+//   return document.documentElement || document.body;
+// };
+
+// document.addEventListener("scroll", () => {
+//   if (scrollContainer().scrollTop > showOnPx) {
+//     backToTopButton.classList.remove("hidden")
+//   } else {
+//     backToTopButton.classList.add("hidden")
+//   }
+// })
+
+// document.addEventListener("scroll", () => {
+//   if (scrollContainer().scrollTop > showOnPx) {
+//     backToTopButton.classList.remove("hidden")
+//   } else {
+//     backToTopButton.classList.add("hidden")
+//   }
+// })
+
+// const goToTop = () => {
+//   document.body.scrollIntoView({
+//     behavior: "smooth",
+//   });
+// };
+// backToTopButton.addEventListener("click", goToTop)
+
 const pixels_per_meter = 100;
 
 const ocean_height = document.getElementById("ocean-container").offsetHeight;
-document.getElementById("depth-bar").style.height = (ocean_height-500).toString()+"px";
+
+
+
+// document.getElementById("depth-bar").style.height = (ocean_height-500).toString()+"px";
 const depth_bar_height = document.getElementById("depth-bar").offsetHeight;
 const marking = document.getElementById("depth-bar").lastChild
 
@@ -805,12 +839,12 @@ function displayShark(sharkData){
     const sharkHeight = (firstPageHeight+(sharkRange*pixels_per_meter)+(500*i)/pixels_per_meter) - 478/2;
 
     const rand_one = Math.random();
-
+    const sharkName = document.createElement("p");
     const sharkDiv = document.createElement("div");
     const sharkDivCol = document.createElement("div");
     const sharkImg = document.createElement("img");
     const sharkPopUp = document.createElement("div");
-
+    sharkName.innerText = shark["Name"];
     sharkDiv.id=i;
 
     let align="start";
@@ -823,16 +857,25 @@ function displayShark(sharkData){
     sharkDiv.classList.add("row","justify-content-"+align) 
     sharkDivCol.classList.add("col-6");
     sharkImg.classList.add("img","trigger");
+    sharkName.classList.add("p","trigger");
+    sharkName.id = i;
     sharkImg.id = i;
     sharkImg.setAttribute("onclick","PopUp(this.id)");
+    sharkName.setAttribute("onclick","PopUp(this.id)");
     sharkImg.setAttribute("src",shark["Image"]);
+  
+    sharkName.setAttribute("data-bs-toggle","modal");
     sharkImg.setAttribute("data-bs-toggle","modal");
     sharkImg.setAttribute("data-bs-target","#popUp");
+    sharkName.setAttribute("data-bs-target","#popUp");
     sharkImg.setAttribute("style","top:"+sharkHeight+"px"); 
+    // sharkName.setAttribute("style","top:"+(sharkHeight-2000)+"px"); 
    
     sharkPopUp.setAttribute("id",i);    
-
+    // const textNode = document.createTextNode(shark["Name"]);
+    // sharkName.appendChild(textNode);
     sharkDivCol.appendChild(sharkImg);
+    // sharkDivCol.appendChild(sharkName);
     sharkDiv.appendChild(sharkDivCol);
     
     if(sharkRange>=200 && sharkRange<1000){
@@ -866,8 +909,9 @@ function PopUp(div_ID){
   
 
   // get photo, HTML photo_ID & render
-  const photo_location = shark["Image"]
+  const photo_location = shark["Image"];
   document.getElementById("200").src = photo_location;
+  
 
 }
 // document.addEventListener(

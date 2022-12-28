@@ -120,13 +120,13 @@ p {
   color: white;
 }
 
-.marking{
+/* .marking{
   color: white;
   position: relative;
   top: 1000px;
   margin-left: 8px;
   width: 100px;
-}
+} */
 
 #sunlight-zone {
   height: 20000px;
@@ -182,6 +182,50 @@ p {
   justify-content: center;
 }
 
+.back-to-top {
+  position: fixed;
+  scroll-behavior: smooth;
+  right: 2rem;
+  bottom: 2rem;
+  z-index: 10000;
+  border-radius: 100%;
+  background: #41b3e8;
+  padding: 0.5rem;
+  border: none;
+  cursor: pointer;
+  opacity: 100%;
+  transition: opacity 1s;
+}
+
+.slow {
+  position: absolute;
+  scroll-behavior: smooth;
+  left: 2rem;
+  top: 81000px;
+  z-index: 10000;
+  border-radius: 100%;
+  background: #608799;
+  padding: 0.5rem;
+  border: none;
+  cursor: pointer;
+  opacity: 100%;
+  transition: opacity 1s;
+}
+.back-to-top:hover {
+  opacity: 60%;
+}
+
+.hidden {
+  display: none;
+  opacity: 0%;
+}
+.w-6  {
+  width: 2.5rem;
+  height: 2.5rem;
+  color: black;
+  scroll-behavior: smooth;
+  
+}
 /* Pop-up */
 .name {
   font-family: 'Open Sans', sans-serif;
@@ -230,6 +274,11 @@ p {
   padding: 0px !important;
 }
 
+photo1{
+  font-family: 'Courier New', Courier, monospace;
+  font-size: large;
+  color: aliceblue;
+}
 
 @media (min-width: 576px){
   .modal-dialog {
