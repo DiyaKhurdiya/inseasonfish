@@ -258,6 +258,14 @@ p {
 }
 
 
+.shark-name {
+  font-family: 'Open Sans', sans-serif;
+  padding-left: 250px;
+  color: white;
+  font-size: 20px;
+}
+
+
 /* 
 .popup {
   color: black;

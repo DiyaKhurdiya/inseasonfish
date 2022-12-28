@@ -808,6 +808,7 @@ function displayShark(sharkData){
 
     const sharkDiv = document.createElement("div");
     const sharkDivCol = document.createElement("div");
+    const sharkName = document.createElement("div");
     const sharkImg = document.createElement("img");
     const sharkPopUp = document.createElement("div");
 
@@ -822,7 +823,14 @@ function displayShark(sharkData){
    
     sharkDiv.classList.add("row","justify-content-"+align) 
     sharkDivCol.classList.add("col-6");
+    sharkName.classList.add("img","shark-name");
     sharkImg.classList.add("img","trigger");
+    sharkName.id = i;
+    sharkName.innerHTML = shark["Name"].toUpperCase();
+    sharkName.setAttribute("onclick","PopUp(this.id)");
+    sharkName.setAttribute("data-bs-toggle","modal");
+    sharkName.setAttribute("data-bs-target","#popUp");
+    sharkName.setAttribute("style",`top:${sharkHeight+100}px`);
     sharkImg.id = i;
     sharkImg.setAttribute("onclick","PopUp(this.id)");
     sharkImg.setAttribute("src",shark["Image"]);
@@ -832,6 +840,7 @@ function displayShark(sharkData){
    
     sharkPopUp.setAttribute("id",i);    
 
+    sharkDivCol.appendChild(sharkName);
     sharkDivCol.appendChild(sharkImg);
     sharkDiv.appendChild(sharkDivCol);
     
@@ -892,7 +901,6 @@ function goTop() {
 // document.addEventListener(
 //   "click",
 //   function (event) {
-//     // if event doesn't have the correct selector, end task
 //     if (
 //       event.target.matches("popup") ||
 //       event.target.closest(".popup") ||
