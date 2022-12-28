@@ -1,992 +1,955 @@
-const MIN_DEPTH = 0;
-const MAX_DEPTH = 10929;
-const firstPageHeight = $(".first-page-offset").height();
-
-const sharkPopData = [
-  {
-    name: "SLENDER WEASEL",
-    sci_name: "PARAGALEUS RANDALLI",
-    range: "1 - 18",
-    size: "48.3",
-    habitat: "Inshore on the inner continental shelf.",
-    fun_fact:
-      "Slender weasel sharks were first described in 1996 and are often confused with other weasel sharks even though they are consumed widely throughout their range.",
-    scale: "2.1",
-    image_src: "Slender-Weasel-Shark-01.svg",
-  },
-  {
-    name: "SPADENOSE",
-    sci_name: "SCOLIODON LATICAUDUS",
-    range: "10 - 13",
-    size: "100",
-    habitat: "Found near rocky shores.",
-    fun_fact:
-      "Spadense sharks are used as baits to capture other sharks and fishes. They are one of the most abundant sharks in Indian waters and it is highly likely that you would have seen one in a fishmarket!",
-    scale: "4.35",
-    image_src: "Spade-Nose-Shark-01.svg",
-  },
-  {
-    name: "GREY SHARPNOSE",
-    sci_name: "RHIZOPRIONODON OLIGOLINX",
-    range: "0 - 36",
-    size: "84.5",
-    habitat:
-      "Reef-associated. They are found in tropical waters, on continental and insular shelves.",
-    fun_fact:
-      "Grey sharpnose sharks feed on fishes, cephalopods and crustaceans.",
-    scale: "3.67",
-    image_src: "Grey-Sharpnose-Shark-01.svg",
-  },
-  {
-    name: "BLACKSPOT",
-    sci_name: "CARCHARHINUS SEALEI",
-    range: "0 - 40",
-    size: "100",
-    habitat: "Reef-associated species.",
-    fun_fact: "Blackspot shark feeds on fishes, crustaceans and squids.",
-    scale: "4.35",
-    image_src: "Black-Spot-Shark-01.svg",
-  },
-  {
-    name: "WINGHEAD",
-    sci_name: "EUSPHYRA BLOCHII",
-    range: "≈ 20",
-    size: "186",
-    habitat: "Coastal, nearshore waters.",
-    fun_fact:
-      "The wide spaced eyes of winghead sharks grants excellent binocular vision especially for hunting!",
-    scale: "8.09",
-    image_src: "Winghead-Shark-01.svg",
-  },
-  {
-    name: "BROADFIN",
-    sci_name: "LAMIOPSIS TEMMINCKII",
-    range: "0 - 50",
-    size: "160",
-    habitat: "Found only in tropical waters (India and Bangladesh).",
-    fun_fact:
-      "Broadfin shark is the only surviving member of the genus Lamiopsis!",
-    scale: "9.04",
-    image_src: "Broad-Fin-Shark-01.svg",
-  },
-  {
-    name: "GRACEFUL",
-    sci_name: "CARCHARHINUS AMBLYRHYNCHOIDES",
-    range: "≤ 50",
-    size: "182",
-    habitat: "Commonly seen in the continental and insular shelves.",
-    fun_fact:
-      "The main diet of Graceful sharks include tiny fishes along with few cephalopods and crustaceans.",
-    scale: "7.91",
-    image_src: "Graceful-Shark-01.svg",
-  },
-  {
-    name: "BLACKTIP",
-    sci_name: "CARCHARHINUS LIMBATUS",
-    range: "0 - 30/100",
-    size: "286",
-    habitat:
-      "Found in tropical and warm temperate waters. Also in estuaries, river mouths, mangrove swamps, lagoond, coral reefs.",
-    fun_fact:
-      "Blacktip reef shark shoot themselves out of water and rotate close of 3 times on its axis before snapping to catch prey!",
-    scale: "12.43",
-    image_src: "Black-Tiip-Shark-01.svg",
-  },
-  {
-    name: "HOOKTOOTH",
-    sci_name: "CHAENOGALEUS MACROSTOMA",
-    range: "0 - 59",
-    size: "100",
-    habitat: "Demersal on the continental and insular shelf.",
-    fun_fact:
-      "Hooktooth sharks are the only extant (living) member of the genus Chaenogaleus.",
-    scale: "4.35",
-    image_src: "Hook-Tooth-Shark-01.svg",
-  },
-  {
-    name: "SPINNER",
-    sci_name: "CARCHARHINUS BREVIPINNA",
-    range: "0 - 30 ≤ 100",
-    size: "300",
-    habitat:
-      "Reef associated, found in warm temperate and tropical and sub-tropcal waters.",
-    fun_fact: "Spinner sharks leap and spin out of water to catch their prey!",
-    scale: "13.04",
-    image_src: "Spinner-Shark-01.svg",
-  },
-  {
-    name: "WHITETIP REEF",
-    sci_name: "TRIAENODON OBESUS",
-    range: "1 - 40 ≤ 330",
-    size: "213",
-    habitat: "Found near coral reefs, around caves and crevices.",
-    fun_fact:
-      "Whitetip reef sharks are nocturnal sharks, that rest on ocean bottom during day and hunt at night! They don't need to constantly keep swimming in order to breathe – something only few sharks can do!",
-    scale: "9.26",
-    image_src: "White-Tip-Reef-Shark-01.svg",
-  },
-  {
-    name: "ZEBRA",
-    sci_name: "STEGOSTOMA FASCIATUM",
-    range: "0 - 62",
-    size: "354",
-    habitat: "Found in tropical and sub-tropical waters. Coastal waters.",
-    fun_fact:
-      "Zebra sharks are nocturnal. Sluggish during the daytime, they mainly hunt their favourite shellfish and crustaceans at night.",
-    scale: "15.39",
-    image_src: "Zebra-Shark-01.svg",
-  },
-  {
-    name: "SPOT-TAIL",
-    sci_name: "CARCHARHINUS SORRAH",
-    range: "20 - 50",
-    size: "160",
-    habitat: "Reef-associated and common near islands and reefs.",
-    fun_fact:
-      "Spot-tail sharks favouriite diet consists of bony fishes but they also like eating crustaceans and cepahlopods.",
-    scale: "6.96",
-    image_src: "Spot-Tail-Shark-01.svg",
-  },
-  {
-    name: "TAWNY NURSE",
-    sci_name: "NEBRIUS FERRUGINEUS",
-    range: "70",
-    size: "320",
-    habitat:
-      "Found near coral reefs, particularly in crevices and caves, and seagrass lagoonal habitat.",
-    fun_fact:
-      "Tawny nurse sharks are nocturnal and form resting aggregations. They can be seen piled across or on top of one another!",
-    scale: "13.91",
-    image_src: "Tawny-Nurse-Shark-01.svg",
-  },
-  {
-    name: "BROWNBANDED BAMBOO",
-    sci_name: "CHILOSCYLLIUM PUNCTATUM",
-    range: "85",
-    size: "132",
-    habitat:
-      "Habitats including nearshore intertidal and subtidal habitats, over sandy and muddy substrates, seagrass beds and rocky and coral reefs.",
-    fun_fact:
-      "Brownbanded bamboo sharks are resilient animals and are known to survive upto 12 hours without water!",
-    scale: "5.74",
-    image_src: "Brown-Banded-Bamboo-Shark-01.svg",
-  },
-  {
-    name: "SANDBAR",
-    sci_name: "CARCHARHINUS PLUMBEUS",
-    range: "20 - 60",
-    size: "300",
-    habitat:
-      "Inhabits temparate and tropical waters. Commonly found in esturaries, bays and harbours and river mouths.",
-    fun_fact:
-      "Sandbar sharks prefer 'smooth' snad bottom and tend to avoid the hard, rocky coral reefs.",
-    scale: "13.04",
-    image_src: "Sandbar-Shark-01.svg",
-  },
-  {
-    name: "SICKLEFIN LEMON",
-    sci_name: "NEGAPRION ACUTIDENS",
-    range: "0 - 90",
-    size: "380",
-    habitat: "Commonly found on coral reefs and sandy plateaus.",
-    fun_fact:
-      "Sicklefin lemon sharks are very shy animals! They usually stay away from humans (unless provoked) even when a bait is presented.",
-    scale: "16.52",
-    image_src: "Sickle-Fin-Lemon-Shark-01.svg",
-  },
-  {
-    name: "SLENDER BAMBOO",
-    sci_name: "CHILOSCYLLIUM INDICUM",
-    range: "90",
-    size: "65",
-    habitat:
-      "Occurs in shallow inshore habitats including intertidal pools, rocky and coral reefs, may also occur in fresh water.",
-    fun_fact:
-      "Slender bamboo sharks  can tolerate brackish and freshwater habitat. They are also known to be sluggish.",
-    scale: "2.83",
-    image_src: "Slender-Bamboo-Shark-01.svg",
-  },
-  {
-    name: "ARABIAN BAMBOO",
-    sci_name: "CHILOSCYLLIUM ARABICUM",
-    range: "2 - 100",
-    size: "62",
-    habitat:
-      "Occurs in coastal waters in coral reefs, lagoons, rocky shores, muddy bottoms and mangrove estuaries.",
-    fun_fact: "One of the few shark species suitable for private aquaria.",
-    scale: "2.7",
-    image_src: "Arabian-Bamboo-Shark-01.svg",
-  },
-  {
-    name: "BLACKTAIL REEF/GREY REEF",
-    sci_name: "CARCHARHINUS AMBLYRHYNCHOS",
-    range: "0 - 50 ≤ 1000",
-    size: "255",
-    habitat:
-      "Found in tropical and sub-tropical reef associated regions such as coral atolls and lagoons.",
-    fun_fact:
-      "Grey reef sharks have a good starlight vision as they are very active during night.",
-    scale: "11.09",
-    image_src: "Grey-Reef-Shark-01.svg",
-  },
-  {
-    name: "BLACKTIP REEF",
-    sci_name: "CARCHARHINUS MELANOPTERUS",
-    range: "0 - 50/100",
-    size: "200",
-    habitat: "Reef associated species.",
-    fun_fact:
-      "Blacktip reef sharks are easily identified by observers in shallow waters because of their characterisitc protruding, rigid first dorsal fin when they swim.",
-    scale: "8.7",
-    image_src: "Black-Tip-Reef-Shark-01.svg",
-  },
-  {
-    name: "BULL",
-    sci_name: "CARCHARHINUS LEUCAS",
-    range: "0 - 150",
-    size: "360",
-    habitat:
-      "Enters estuaries, bays, lagoons and river mouths. Found in tropical and sub-tropical waters.",
-    fun_fact:
-      "Bull sharks are name so because they first head butt their prey before attacking and eating them. These sharks are aggressive and was the insipiration behind a popular book that was later made into a movie – Jaws, 1914.",
-    scale: "17.39",
-    image_src: "Bull-Shark-01.svg",
-  },
-  {
-    name: "GREY BAMBOO",
-    sci_name: "CHILOSCYLLIUM GRISEUM",
-    range: "5 - 100",
-    size: "77",
-    habitat:
-      "Occurs in shallow inshore habitats including rocky and coral reefs.",
-    fun_fact: "Juveniles have dark band patterns on their body.",
-    scale: "3.35",
-    image_src: "Grey-Bamboo-Shark-01.svg",
-  },
-  {
-    name: "PIGEYE",
-    sci_name: "CARCHARHINUS AMBOINENSIS",
-    range: "≤ 100",
-    size: "280",
-    habitat: "Found in tropical waters. Reef associated.",
-    fun_fact:
-      "Pigeye sharks and Bull sharks are very similar in appearence which leads to a lot of confusion!",
-    scale: "12.17",
-    image_src: "Pig-Eye-Shark-01.svg",
-  },
-  {
-    name: "SLITEYE",
-    sci_name: "LOXODON MACRORHINUS",
-    range: "7 - 100",
-    size: "98",
-    habitat: "Found in tropical waters.",
-    fun_fact:
-      "Silteye sharks are know to show faster growth and reach maturity earlier twhen compared to other members of its family.",
-    scale: "4.26",
-    image_src: "Slit-Eye-Shark-01.svg",
-  },
-  {
-    name: "WHITESPOTTED BAMBOO",
-    sci_name: "CHILOSCYLLIUM PLAGIOSUM",
-    range: "50",
-    size: "83",
-    habitat:
-      "Occurs in shallow coastal inshore coral reef habitats; it is nocturnal and rest by day in reef crevices.",
-    fun_fact:
-      "Whitespotted bamboo sharks are little known however, they are known to adapt well in captivity and is commonly seen in public aquariums.",
-    scale: "4.13",
-    image_src: "White-Spotted-Bamboo-Shark-01.svg",
-  },
-  {
-    name: "SNAGGLETOOTH",
-    sci_name: "HEMIPRISTIS ELONGATA",
-    range: "1 - 130",
-    size: "240",
-    habitat: "Coastal.",
-    fun_fact:
-      "Snaggletooth sharks live at the bottom of the sea and grow >7 feet long. Despite their dangerous looking teeth, they have never attacked humans!",
-    scale: "10.43",
-    image_src: "Snaggle-Tooth-Shark-01.svg",
-  },
-  {
-    name: "PELAGIC THRESHER",
-    sci_name: "ALOPIAS PELAGICUS",
-    range: "0 - 152",
-    size: "428",
-    habitat: "Found in warm offshore surface waters of open ocean.",
-    fun_fact:
-      "Pelagic thresher sharks use their long tail to whip small fish and squid, and stun them. Then the shark can quickly make a U-turn and gobble them up! This is the smallest of the 3 thresher sharks that we find in India.",
-    scale: "18.61",
-    image_src: "Pelagic-Shark-01.svg",
-  },
-  {
-    name: "PONDICHERRY",
-    sci_name: "CARCHARHINUS HEMIODON",
-    range: "10 - 150",
-    size: "200",
-    habitat: "Indo-west Pacific distribution.",
-    fun_fact:
-      "No verifiable records since 1960. Life history is unknown. It is a rarely seen shark and not much is known about it.",
-    scale: "8.7",
-    image_src: "Pondicherry-Shark-01.svg",
-  },
-  {
-    name: "MAGNIFICENT CATSHARK",
-    sci_name: "PROSCYLLIUM MAGNIFICUM",
-    range: "≤ 144",
-    size: "49",
-    habitat: "Eastern Indian Ocean.",
-    fun_fact:
-      'Some individuals have "clown face" patterns beneath each dorsal fin.',
-    scale: "2.13",
-    image_src: "Magnificent-Cat-Shark-01.svg",
-  },
-  {
-    name: "SHARPNOSE SEVENGILL",
-    sci_name: "HEPTRANCHIAS PERLO",
-    range: "75 - 98",
-    size: "137",
-    habitat: "Marine benthic, deep waters, bentho-pelagic.",
-    fun_fact:
-      "Sharpnose sevengill sharks are a very active species and unlike most sharks it has seven (instead of five) gill slits!",
-    scale: "6.09",
-    image_src: "Sharp-Nose-7-Gill-Shark-01.svg",
-  },
-  {
-    name: "SICKLEFIN WEASEL",
-    sci_name: "HEMIGALEUS MICROSTOMA",
-    range: "≤ 170",
-    size: "114",
-    habitat: "Demersal on the continental shelf.",
-    fun_fact:
-      "Sicklefin weasel sharks are named after their sickle shaped fins, An interesting fact is that their gestation period (6 months) is shorter than most other sharks and so females give birth twice a year.",
-    scale: "4.96",
-    image_src: "Sicklefin-Weasel-Shark-01.svg",
-  },
-  {
-    name: "BIG EYE THERSHER",
-    sci_name: "ALOPIAS SUPERCILIOSUS",
-    range: "0 - 100 ≤ 720",
-    size: "488",
-    habitat:
-      "Found in warm temperate and tropical waters, occasionally enters shallow waters close to the coast.",
-    fun_fact:
-      "As the name suggests, big-eye thresher sharks have large eyes that help them to see in low light! They come to the water surface at night and dive to great depths during the day. Like pelagic thresher shark it uses its tail to stun the prey and eat them!",
-    scale: "21.22",
-    image_src: "Big-Eye-Thresher-Shark-01.svg",
-  },
-  {
-    name: "BRAMBLE",
-    sci_name: "ECHINORHINUS BRUCUS",
-    range: "200",
-    size: "310",
-    habitat:
-      "Bottom of outer continental and insular shelves, may have estuarine affinity.",
-    fun_fact:
-      "Bramble sharks are considered to be rather sluggish animals and have thorn like denticles on its body.",
-    scale: "13.48",
-    image_src: "Bramble-Shark-01.svg",
-  },
-  {
-    name: "HARDNOSE",
-    sci_name: "CARCHARHINUS MACLOTI",
-    range: "0 - 170",
-    size: "110",
-    habitat: "Distributed in the tropical waters.",
-    fun_fact:
-      "Wonder why these sharks are called 'hardnose sharks'? It is because of the presence of heavily calcified cartilages on its snout!",
-    scale: "4.78",
-    image_src: "Hard-Nose-Shark-01.svg",
-  },
-  {
-    name: "MANGALORE HOUNDSHARK",
-    sci_name: "IAGO MANGALORENSIS",
-    range: "≤ 183",
-    size: "57.7",
-    habitat: "Western Indian Ocean.",
-    fun_fact:
-      "Mangalore houndsharks are considered to be semi-pelagic species meaning they can live partially live on the bottom and partially in the water colun above!",
-    scale: "2.51",
-    image_src: "Mangalore-Hound-Shark-01.svg",
-  },
-  {
-    name: "MILK",
-    sci_name: "RHIZOPRIONODON ACUTUS",
-    range: "0 - 200",
-    size: "175",
-    habitat:
-      "Found on continental shelves close to sandy beaches and sometime in estuaries.",
-    fun_fact:
-      "Milk sharks sometimes enter freshwater habitats and we are not sure why they do so!",
-    scale: "7.61",
-    image_src: "Milk-Shark-01.svg",
-  },
-  {
-    name: "SAND TIGER",
-    sci_name: "CARCHARIAS TAURUS",
-    range: "1 - 191",
-    size: "330",
-    habitat:
-      "Often found on the bottom but can be seen at all levels of the water column including the surf zone.Found in shallow bays, coral and rocky reefs and around caves.",
-    fun_fact:
-      "Sand tiger sharks are the only known shark that are able to gulp and store air in its stomach to maintain neutral buoyancy while swimming!",
-    scale: "14.35",
-    image_src: "Sand-Tiger-Shark-01.svg",
-  },
-  {
-    name: "SMOOTH HAMMERHEAD",
-    sci_name: "SPHYRNA ZYGAENA",
-    range: "≤ 200",
-    size: "500",
-    habitat:
-      "Widespread in temperate and tropical seas, coastal and semi-oceanic, pelagic.",
-    fun_fact:
-      "In the summer, smooth hammerhead sharks are known to migrate towards the poles in large schools of hundreds to even thousands of individuals!",
-    scale: "21.74",
-    image_src: "Smooth-Hammerhead-Shark-01.svg",
-  },
-  {
-    name: "GANGES",
-    sci_name: "GLYPHIS GANGETICUS",
-    range: "≈ 130",
-    size: "204",
-    habitat:
-      "Endemic to India and is found in River Hoogly (West Bengal), Ganges, Brahmaputra, Mahanadi (Bihar, Assam and Odisha).",
-    fun_fact:
-      "The Ganges shark is one of only six river sharks in the world. Often mistaken for a bull shark, the ganges shark also sometimes enters the sea!",
-    scale: "8.87",
-    image_src: "Ganges-Shark-01.svg",
-  },
-  {
-    name: "GREAT HAMMERHEAD",
-    sci_name: "SPHYRNA MOKARRAN",
-    range: "1 - 300",
-    size: "610",
-    habitat: "Bottom dwelling and reef associated.",
-    fun_fact:
-      "Great hammerhead sharks are the largest species of hammerhead in the world.",
-    scale: "26.52",
-    image_src: "Great-Hammerhead-Shark-01.svg",
-  },
-  {
-    name: "OCEANIC WHITETIP",
-    sci_name: "CARCHARHINUS LONGIMANUS",
-    range: "0 - 230",
-    size: "400",
-    habitat:
-      "Found in open ocean. In epipelagic tropical and sub-tropical waters.",
-    fun_fact:
-      "Oceanic whitetip sharks  are one of the most threatened sharks which come under Appendix II of the CITES. They are sometimes found to hang around pilot whales.",
-    scale: "17.39",
-    image_src: "Oceanic-White-Tip-Shark-01.svg",
-  },
-  {
-    name: "SHORTFINMAKO",
-    sci_name: "ISURUS OXYRINCHUS",
-    range: "0 - 150 ≤ 650",
-    size: "445",
-    habitat:
-      "Truly pelagic species. Found in warm tropical and temperate waters.",
-    fun_fact:
-      "Shortfin mako sharks are the fastest shark in the world! They can reach swimming speeds upto 70km/hr and can be seen breaching the water surface while feeding.",
-    scale: "19.35",
-    image_src: "Short-Fin-Mako-Shark-01.svg",
-  },
-  {
-    name: "TIGER",
-    sci_name: "GALEOCERDO CUVIER",
-    range: "0 - 350",
-    size: "750",
-    habitat:
-      "Found in tropical and temperate waters and also found in estuaries and harbours.",
-    fun_fact:
-      "Tiger sharks are seasonal migrants, who travel to temparate waters from tropics during warmers months and vice versa during winter. Even though they are slow-moving, they can effectively ambush predators and also uses short bursts to capture prey.",
-    scale: "32.61",
-    image_src: "Tiger-Shark-01.svg",
-  },
-  {
-    name: "WHITECHEEK",
-    sci_name: "CARCHARHINUS DUSSUMIERI",
-    range: "170",
-    size: "121",
-    habitat: "Reef-associated. Inshore over continental and insular slopes.",
-    fun_fact:
-      "The Whitecheek shark is small. It grows to a maximum of 1 metre!",
-    scale: "5.26",
-    image_src: "White-Cheek-Shark-01.svg",
-  },
-  {
-    name: "LONGFINMAKO",
-    sci_name: "ISURUS PAUCUS",
-    range: "120 - 240",
-    size: "427",
-    habitat: "Found in warm tropical and temperate waters and in open ocean.",
-    fun_fact:
-      "The longfin mako shark was described just twenty years ago (in 2001). The females give birth to only 2 pups at a time, in shallow water. The rest of their life is spent far away from coasts, in the open ocean.",
-    scale: "18.57",
-    image_src: "Long-Fin-Mako-Shark-01.svg",
-  },
-  {
-    name: "ARABIAN SMOOTHHOUND",
-    sci_name: "MUSTELUS MOSIS",
-    range: "≤ 400",
-    size: "150",
-    habitat: "Benthic, sometimes found in association with coral reefs.",
-    fun_fact: "Arabian smoothhound sharks are known to do well in captivity.",
-    scale: "6.52",
-    image_src: "Arabian-Smooth-Hound-Shark-01.svg",
-  },
-  {
-    name: "COMMON THRESHER",
-    sci_name: "ALOPIAS VULPINUS",
-    range: "0 - 400",
-    size: "573",
-    habitat:
-      "It is an oceanic and coastal species. Found in tropical as well as cold temperate waters.",
-    fun_fact:
-      "Common thresher sharks are the largest of the three thresher sharks. They are fast swimmers and they can even be seen leaping out of water!",
-    scale: "24.91",
-    image_src: "Common-Thresher-Shark-01.svg",
-  },
-  {
-    name: "DUSKY",
-    sci_name: "CARCHARHINUS OBSCURUS",
-    range: "0 - 200/400",
-    size: "420",
-    habitat: "Found in tropical and warm temperate waters.",
-    fun_fact:
-      "Dusky sharks have a diverse diet as they are known to feed on bottom dwellling and pelagic bony fishes, sharks, rays, saktes, cephalopods, gastropods, crustaceans and mammalian carrions. They also feed on inorganic objects!",
-    scale: "18.26",
-    image_src: "Dusky-Shark-01.svg",
-  },
-  {
-    name: "BIGNOSE",
-    sci_name: "CARCHARHINUS ALTIMUS",
-    range: "25 - 450",
-    size: "300",
-    habitat:
-      "Found in deep offshore waters on continental and insular shelves.",
-    fun_fact:
-      "They feed on fish and other small sharks and rays near the sea floor.",
-    scale: "13.04",
-    image_src: "Big-Nose-Shark-01.svg",
-  },
-  {
-    name: "DWARF GULPER",
-    sci_name: "CENTROPHORUS ATROMARGINATUS",
-    range: "183 - 450",
-    size: "87",
-    habitat: "They are demersal on the upper continental slope.",
-    fun_fact:
-      "Discovered in the early 20th century, very little is relatively known about the behaviour of dwarf gulper sharks. They are known to gove birth to single pups!",
-    scale: "3.78",
-    image_src: "Dwarf-Gulper-Shark-01.svg",
-  },
-  {
-    name: "SILKY",
-    sci_name: "CARCHARHINUS FALCIFORMIS",
-    range: "0 - 500",
-    size: "350",
-    habitat:
-      "Found in topical-subtropical waters. Commonly found near the edges of continental shelves and over deepwater reefs.",
-    fun_fact:
-      "Silky sharks are very sensitive to sound and they are one of the most abundant pelagic sharks in the world. They also known as 'net eater shark' in the Pacific because they destroy tuna seine nets. As you guessed, their favourite food is tuna!",
-    scale: "15.22",
-    image_src: "Silky-Shark-01.svg",
-  },
-  {
-    name: "INDIAN SWELLSHARK",
-    sci_name: "CEPHALOSCYLLIUM SILASI",
-    range: "250 - 500",
-    size: "36",
-    habitat:
-      "They occur in deep benthic areas and are demersal on the continental slope.",
-    fun_fact:
-      "Like it's name suggests, the Indian swellshark can expand its body to make it appear larger to predators!",
-    scale: "1.57",
-    image_src: "Swell-Shark-01.svg",
-  },
-  {
-    name: "PYGMY RIBBONTAIL CATSHARK",
-    sci_name: "ERIDACNIS RADCLIFFEI",
-    range: "71 - 766",
-    size: "23",
-    habitat: "Deep water benthic shark, found near muddy bottoms.",
-    fun_fact:
-      "The range of pygmy ribbontail catshark is striking compared to other mebers of the genus as it has a broad range!",
-    scale: "1",
-    image_src: "Ribbon-Tail-Cat-Shark-01.svg",
-  },
-  {
-    name: "SILVERTIP",
-    sci_name: "CARCHARHINUS ALBIMARGINATUS",
-    range: "0 - 800",
-    size: "300",
-    habitat: "Prefers offshore island habitats.",
-    fun_fact:
-      "Silvertip sharks are good hunters with unpredictable behaviour and aggressive hunting tactics. These sharks feed on animals that are found on the seafloor and in the mid-water like eagle rays, tunas, small sharks, octopus and squid.",
-    scale: "13.04",
-    image_src: "Silver-Tip-Shark-01.svg",
-  },
-  {
-    name: "SMALLFIN GULPER",
-    sci_name: "CENTROPHORUS MOLUCCENSIS",
-    range: "125 - 823",
-    size: "100",
-    habitat:
-      "They are found on continental and insular shelves and upper slopes.",
-    fun_fact:
-      "Smallfin gulper sharks feed on bony fishes, other dogfish sharks, squid, octopus, shrimps and tunicates!",
-    scale: "4.35",
-    image_src: "Small-Fin-Gulper-Shark-01.svg",
-  },
-  {
-    name: "BLUE",
-    sci_name: "PRIONACE GLAUCA",
-    range: "1 - 650/1000",
-    size: "400",
-    habitat: "Found in open water of tropical and temperate regions.",
-    fun_fact:
-      "Females and males of blue sharks are distinct (sexual dimorphism), with females growing larger with has thicker skins.",
-    scale: "17.39",
-    image_src: "Blue-Shark-01.svg",
-  },
-  {
-    name: "SCALLOPED HAMMERHEAD",
-    sci_name: "SPHYRNA LEWINI",
-    range: "≤ 1000",
-    size: "430",
-    habitat: "Near deep waters to intertidal.",
-    fun_fact:
-      "Scalloped hammerhead adults are known to occur solitary, in pairs and even in schools! While juveniles occur in schools.",
-    scale: "18.7",
-    image_src: "Scalloped-Hammerhead-Shark-01.svg",
-  },
-  {
-    name: "CROCODILE",
-    sci_name: "PSEUDOCARCHARIAS KAMOHARAI",
-    range: "590",
-    size: "110",
-    habitat: "They are found from the ocean surface to the depths.",
-    fun_fact:
-      "While many shark species are consumed, the flesh of crocodile sharks are not appreciated so the catch is usually discarded!",
-    scale: "5.3",
-    image_src: "Crocodile-Shark-01.svg",
-  },
-  {
-    name: "GULPER",
-    sci_name: "CENTROPHORUS GRANULOSUS",
-    range: "50 - 1440",
-    size: "170",
-    habitat:
-      "They are demersal and benthopelagic on continental and insular shelves.",
-    fun_fact:
-      "Gulper sharks have a gestation period of 2 years and a lot of information is yet to be known.",
-    scale: "7.39",
-    image_src: "Gulper-Shark-01.svg",
-  },
-  {
-    name: "LITTLE GULPER",
-    sci_name: "CENTROPHORUS UYATO",
-    range: "50 - 1400",
-    size: "110",
-    habitat:
-      "They are demersal on continental and insular shelves and slopes, they are also found on seafloor.",
-    fun_fact:
-      "Little gulper sharks are known to give birth to just 1 pup per litter!",
-    scale: "4.78",
-    image_src: "Little-Gulper-Shark-01.svg",
-  },
-  {
-    name: "LONGNOSE VELVET DOGFISH",
-    sci_name: "CENTROSCYMNUS CREPIDATOR",
-    range: "230 - 1500",
-    size: "130",
-    habitat: "Circumglobal.",
-    fun_fact: "Its occurrence is rare and it is rarely caught in fishing nets.",
-    scale: "5.65",
-    image_src: "Longnose-Velvet-Dogfish-Shark-01.svg",
-  },
-  {
-    name: "ARROWHEAD DOGFISH",
-    sci_name: "DEANIA PROFUNDORUM",
-    range: "205 - 1800",
-    size: "79",
-    habitat: "They are found from continental and insular slopes.",
-    fun_fact:
-      "Arrowhead dogfishes are deep-water animals and the depth ranges from 205-1800m and they are found in large schools!",
-    scale: "3.43",
-    image_src: "Arrowhead-Dogfish-Shark-01.svg",
-  },
-  {
-    name: "SMALL-TOOTH SAND TIGER",
-    sci_name: "ODONTASPIS FEROX",
-    range: "10 - 2000",
-    size: "450",
-    habitat:
-      "They mainly live close to the seabed around islands and underwater seamounts characterised by narrow, steeply sloping shelves, or in the deep waters of continental outer shelves and upper slopes of larger land masses.",
-    fun_fact:
-      "Smalltooth sand tiger shark's Liver has high squalene content. They are known to show intrautrine cannibalism!",
-    scale: "19.57",
-    image_src: "Small-Tooth-Sand-Tiger-Shark-01.svg",
-  },
-  {
-    name: "SMOOTH LANTERNSHARK",
-    sci_name: "ETMOPTERUS PUSILLUS",
-    range: "1120",
-    size: "50",
-    habitat:
-      "Found in temperate and tropical waters worldwide. Arabian Sea (one specimen).  They are ecorded from continental and insular slopes.",
-    fun_fact:
-      "Very little is known about the biology of smooth latern sharks although they are known to feed on squids and fishes!",
-    scale: "2.17",
-    image_src: "Lantern-Shark-01.svg",
-  },
-  {
-    name: "BIGEYE HOUNDSHARK",
-    sci_name: "IAGO OMANENSIS",
-    range: "110 - 2195",
-    size: "37",
-    habitat: "Deep waters.",
-    fun_fact:
-      "Female bigeye hound sharks prefer shallow waters, while males cool off in deeper water. Did you know the females always grow larger than males?",
-    scale: "1.61",
-    image_src: "Big-Eye-Hound-Shark-01.svg",
-  },
-  {
-    name: "LEAFSCALE GULPER",
-    sci_name: "CENTROPHORUS SQUAMOSUS",
-    range: "145 - 2400",
-    size: "164",
-    habitat:
-      "They are demersal on continental and insular shelves and slopes to the abyss.",
-    fun_fact:
-      "Leafscale gulper sharks are named so because they have tiny v-shaped scales on the skin that look like leaves!",
-    scale: "7.13",
-    image_src: "Leaf-Scale-Gulper-Shark-01.svg",
-  },
-  {
-    name: "WHALE",
-    sci_name: "RHINCODON TYPUS",
-    range: "0 - 1928",
-    size: "1700",
-    habitat:
-      "Found throughout tropical and warm temperate waters. Found to ocassionally enter coral atolls and lagoons.",
-    fun_fact:
-      "Whale sharks are the largest fish in our seas and oceans! They are filter feeders, meaning they feed on tiny floating food matter and particles like zooplakton and phytoplantons.",
-    scale: "86.96",
-    image_src: "Whale-Shark-01.svg",
-  },
-  {
-    name: "VELVET DOGFISH",
-    sci_name: "ZAMEUS SQUAMULOSUS",
-    range: "2200",
-    size: "84",
-    habitat: "Atlantic, Indian and Pacific tropical oceans.",
-    fun_fact:
-      "There are only isolated occurrence reports for this species from Indian waters.",
-    scale: "3.65",
-    image_src: "Velvet-Dogfish-Shark-01.svg",
-  },
-];
-
-// shows depth
-$(document).scroll(() => {
-  var scrollTop = Math.ceil(($(window).scrollTop() - firstPageHeight) / 19);
-  // if sea level beyond Challenger Deep, end
-  if (scrollTop <= MIN_DEPTH || scrollTop >= MAX_DEPTH) {
-    scrollTop = scrollTop >= MAX_DEPTH ? MAX_DEPTH : MIN_DEPTH;
-    $(".depth-line").css("opacity", "0");
-  } else {
-    $(".depth-line").css("opacity", "1");
+data=[
+  {
+    "Name": "Pygmy ribbontail catshark",
+    "Scientific Name": "Eridacnis radcliffei",
+    "Range(in meters)": "20 to 60 m",
+    "Range(in pixels)": 23,
+    "Origin": "Deep water benthic shark, found near muddy bottoms",
+    "Description": "The range of pygmy ribbontail catshark is striking compared to other mebers of the genus as it has a broad range!",
+    "Scale": 1,
+    "Image": "./assets/Ribbon-Tail-Cat-Shark-01.svg",
+    "Size": 23
+  },
+  {
+    "Name": "Indian swellshark",
+    "Scientific Name": "Cephaloscyllium silasi",
+    "Range(in meters)": "10 - 13m",
+    "Range(in pixels)": 36,
+    "Origin": "They occur in deep benthic areas and are demersal on the continental slope",
+    "Description": "Like it's name suggests, the Indian swellshark can expand its body to make it appear larger to predators!",
+    "Scale": 1.57,
+    "Image": "./assets/Swell-Shark-01.svg",
+    "Size": 36
+  },
+  {
+    "Name": "Bigeye houndshark",
+    "Scientific Name": "Iago omanensis",
+    "Range(in meters)": "0 to 200m",
+    "Range(in pixels)": 37,
+    "Origin": "Deep waters",
+    "Description": "Female bigeye hound sharks prefer shallow waters, while males cool off in deeper water. Did you know the females always grow larger than males?",
+    "Scale": 1.61,
+    "Image": "./assets/Big-Eye-Hound-Shark-01.svg",
+    "Size": 37
+  },
+  {
+    "Name": "Slender weasel shark",
+    "Scientific Name": "Paragaleus randalli",
+    "Range(in meters)": "590 m",
+    "Range(in pixels)": 48.3,
+    "Origin": "Inshore on the inner continental shelf",
+    "Description": "Slender weasel sharks were first described in 1996 and are often confused with other weasel sharks even though they are consumed widely throughout their range.",
+    "Scale": 2.1,
+    "Image": "./assets/Slender-Weasel-Shark-01.svg",
+    "Size": 48.3
+  },
+  {
+    "Name": "Magnificent catshark",
+    "Scientific Name": "Proscyllium magnificum",
+    "Range(in meters)": "120 to 240 m",
+    "Range(in pixels)": 49,
+    "Origin": "Eastern Indian Ocean",
+    "Description": "Some individuals have \"clown face\" patterns beneath each dorsal fin",
+    "Scale": 2.13,
+    "Image": "./assets/Magnificent-Cat-Shark-01.svg",
+    "Size": 49
+  },
+  {
+    "Name": "Smooth lanternshark",
+    "Scientific Name": "Etmopterus pusillus",
+    "Range(in meters)": "85 m",
+    "Range(in pixels)": 53,
+    "Origin": "Found in temperate and tropical waters worldwide. Arabian Sea (one specimen).  They are ecorded from continental and insular slopes",
+    "Description": "Very little is known about the biology of smooth latern sharks although they are known to feed on squids and fishes!",
+    "Scale": 2.17,
+    "Image": "./assets/Lantern-Shark-01.svg",
+    "Size": 50
+  },
+  {
+    "Name": "Mangalore houndshark",
+    "Scientific Name": "Iago mangalorensis",
+    "Range(in meters)": "125-823 m",
+    "Range(in pixels)": 57.7,
+    "Origin": "Western Indian Ocean",
+    "Description": "Mangalore houndsharks are considered to be semi-pelagic species meaning they can live partially live on the bottom and partially in the water colun above!",
+    "Scale": 2.51,
+    "Image": "./assets/Mangalore-Hound-Shark-01.svg",
+    "Size": 57.7
+  },
+  {
+    "Name": "Arabian bamboo shark",
+    "Scientific Name": "Chiloscyllium arabicum",
+    "Range(in meters)": "0 to 152 m",
+    "Range(in pixels)": 62,
+    "Origin": "Occurs in coastal waters in coral reefs, lagoons, rocky shores, muddy bottoms and mangrove estuaries",
+    "Description": "One of the few shark species suitable for private aquaria",
+    "Scale": 2.7,
+    "Image": "./assets/Arabian-Bamboo-Shark-01.svg",
+    "Size": 62
+  },
+  {
+    "Name": "Slender bamboo shark",
+    "Scientific Name": "Chiloscyllium indicum",
+    "Range(in meters)": "50-1440 m",
+    "Range(in pixels)": 65,
+    "Origin": "Occurs in shallow inshore habitats including intertidal pools, rocky and coral reefs, may also occur in fresh water",
+    "Description": "Slender bamboo sharks  can tolerate brackish and freshwater habitat. They are also known to be sluggish.",
+    "Scale": 2.83,
+    "Image": "./assets/Slender-Bamboo-Shark-01.svg",
+    "Size": 65
+  },
+  {
+    "Name": "Grey bamboo shark",
+    "Scientific Name": "Chiloscyllium griseum",
+    "Range(in meters)": "1 to 40m but can go to a depth of 330 m",
+    "Range(in pixels)": 77,
+    "Origin": "Occurs in shallow inshore habitats including rocky and coral reefs",
+    "Description": "Juveniles have dark band patterns on their body",
+    "Scale": 3.35,
+    "Image": "./assets/Grey-Bamboo-Shark-01.svg",
+    "Size": 77
+  },
+  {
+    "Name": "Arrowhead dogfish",
+    "Scientific Name": "Deania profundorum",
+    "Range(in meters)": "0 to 1928m",
+    "Range(in pixels)": 79,
+    "Origin": "They are found from continental and insular slopes",
+    "Description": "Arrowhead dogfishes are deep-water animals and the depth ranges from 205-1800m and they are found in large schools!",
+    "Scale": 3.43,
+    "Image": "./assets/Arrowhead-Dogfish-Shark-01.svg",
+    "Size": 79
+  },
+  {
+    "Name": "Whitespotted bamboo shark",
+    "Scientific Name": "Chiloscyllium plagiosum",
+    "Range(in meters)": "Upto 183 m",
+    "Range(in pixels)": 172,
+    "Origin": "Occurs in shallow coastal inshore coral reef habitats; it is nocturnal and rest by day in reef crevices",
+    "Description": "Whitespotted bamboo sharks are little known however, they are known to adapt well in captivity and is commonly seen in public aquariums.",
+    "Scale": 4.13,
+    "Image": "./assets/White-Spotted-Bamboo-Shark-01.svg",
+    "Size": 83
+  },
+  {
+    "Name": "Velvet dogfish",
+    "Scientific Name": "Zameus squamulosus",
+    "Range(in meters)": "upto 100m",
+    "Range(in pixels)": 84,
+    "Origin": "Atlantic, Indian and Pacific tropical oceans",
+    "Description": "There are only isolated occurrence reports for this species from Indian waters",
+    "Scale": 3.65,
+    "Image": "./assets/Velvet-Dogfish-Shark-01.svg",
+    "Size": 84
+  },
+  {
+    "Name": "Grey sharpnose shark",
+    "Scientific Name": "Rhizoprionodon oligolinx",
+    "Range(in meters)": "1 to 650/1000m",
+    "Range(in pixels)": 84.5,
+    "Origin": "Reef-associated. They are found in tropical waters, on continental and insular shelves.",
+    "Description": "Grey sharpnose sharks feed on fishes, cephalopods and crustaceans.",
+    "Scale": 3.67,
+    "Image": "./assets/Grey-Sharpnose-Shark-01.svg",
+    "Size": 84.5
+  },
+  {
+    "Name": "Dwarf gulper shark",
+    "Scientific Name": "Centrophorus atromarginatus",
+    "Range(in meters)": "0 to 720m, but most common - 100m",
+    "Range(in pixels)": 87,
+    "Origin": "They are demersal on the upper continental slope",
+    "Description": "Discovered in the early 20th century, very little is relatively known about the behaviour of dwarf gulper sharks. They are known to gove birth to single pups!",
+    "Scale": 3.78,
+    "Image": "./assets/Dwarf-Gulper-Shark-01.svg",
+    "Size": 87
+  },
+  {
+    "Name": "Sliteye shark",
+    "Scientific Name": "Loxodon macrorhinus",
+    "Range(in meters)": "7 to 100m",
+    "Range(in pixels)": 98,
+    "Origin": "Found in tropical waters.",
+    "Description": "Silteye sharks are know to show faster growth and reach maturity earlier twhen compared to other members of its family.",
+    "Scale": 4.26,
+    "Image": "./assets/Slit-Eye-Shark-01.svg",
+    "Size": 98
+  },
+  {
+    "Name": "Blackspot shark",
+    "Scientific Name": "Carcharhinus sealei",
+    "Range(in meters)": "0 to 30/100m",
+    "Range(in pixels)": 100,
+    "Origin": "Reef-associated species.",
+    "Description": "Blackspot shark feeds on fishes, crustaceans and squids.",
+    "Scale": 4.35,
+    "Image": "./assets/Black-Spot-Shark-01.svg",
+    "Size": 117
+  },
+  {
+    "Name": "Hooktooth shark",
+    "Scientific Name": "Chaenogaleus macrostoma",
+    "Range(in meters)": "1-191 m",
+    "Range(in pixels)": 159,
+    "Origin": "Demersal on the continental and insular shelf",
+    "Description": "Hooktooth sharks are the only extant (living) member of the genus Chaenogaleus.",
+    "Scale": 4.35,
+    "Image": "./assets/Hook-Tooth-Shark-01.svg",
+    "Size": 100
+  },
+  {
+    "Name": "Smallfin gulper shark",
+    "Scientific Name": "Centrophorus moluccensis",
+    "Range(in meters)": "71-766 m",
+    "Range(in pixels)": 748,
+    "Origin": "They are found on continental and insular shelves and upper slopes",
+    "Description": "Smallfin gulper sharks feed on bony fishes, other dogfish sharks, squid, octopus, shrimps and tunicates!",
+    "Scale": 4.35,
+    "Image": "./assets/Small-Fin-Gulper-Shark-01.svg",
+    "Size": 100
+  },
+  {
+    "Name": "Spadenose shark",
+    "Scientific Name": "Scoliodon laticaudus",
+    "Range(in meters)": "Around 130 m",
+    "Range(in pixels)": 118,
+    "Origin": "Found near rocky shores",
+    "Description": "Spadense sharks are used as baits to capture other sharks and fishes. They are one of the most abundant sharks in Indian waters and it is highly likely that you would have seen one in a fishmarket!",
+    "Scale": 4.35,
+    "Image": "./assets/Spade-Nose-Shark-01.svg",
+    "Size": 100
+  },
+  {
+    "Name": "Crocodile shark",
+    "Scientific Name": "Pseudocarcharias kamoharai",
+    "Range(in meters)": "0 to 62m",
+    "Range(in pixels)": 110,
+    "Origin": "They are found from the ocean surface to the depths",
+    "Description": "While many shark species are consumed, the flesh of crocodile sharks are not appreciated so the catch is usually discarded!",
+    "Scale": 5.3,
+    "Image": "./assets/Crocodile-Shark-01.svg",
+    "Size": 62
+  },
+  {
+    "Name": "Hardnose shark",
+    "Scientific Name": "Carcharhinus macloti",
+    "Range(in meters)": "1-18 m",
+    "Range(in pixels)": 11,
+    "Origin": "Distributed in the tropical waters.",
+    "Description": "Wonder why these sharks are called 'hardnose sharks'? It is because of the presence of heavily calcified cartilages on its snout!",
+    "Scale": 4.78,
+    "Image": "./assets/Hard-Nose-Shark-01.svg",
+    "Size": 110
+  },
+  {
+    "Name": "Little gulper shark",
+    "Scientific Name": "Centrophorus uyato",
+    "Range(in meters)": "10-2000 m",
+    "Range(in pixels)": 1789,
+    "Origin": "They are demersal on continental and insular shelves and slopes, they are also found on seafloor",
+    "Description": "Little gulper sharks are known to give birth to just 1 pup per litter!",
+    "Scale": 4.78,
+    "Image": "./assets/Little-Gulper-Shark-01.svg",
+    "Size": 110
+  },
+  {
+    "Name": "Sicklefin weasel shark",
+    "Scientific Name": "Hemigaleus microstoma",
+    "Range(in meters)": "5-100 m",
+    "Range(in pixels)": 114,
+    "Origin": "Demersal on the continental shelf",
+    "Description": "Sicklefin weasel sharks are named after their sickle shaped fins, An interesting fact is that their gestation period (6 months) is shorter than most other sharks and so females give birth twice a year.",
+    "Scale": 4.96,
+    "Image": "./assets/Sicklefin-Weasel-Shark-01.svg",
+    "Size": 48.3
+  },
+  {
+    "Name": "Whitecheek shark",
+    "Scientific Name": "Carcharhinus dussumieri",
+    "Range(in meters)": "Upto 170 m",
+    "Range(in pixels)": 121,
+    "Origin": "Reef-associated. Inshore over continental and insular slopes.",
+    "Description": "The Whitecheek shark is small. It grows to a maximum of 1 metre!",
+    "Scale": 5.26,
+    "Image": "./assets/White-Cheek-Shark-01.svg",
+    "Size": 121
+  },
+  {
+    "Name": "Longnose velvet dogfish",
+    "Scientific Name": "Centroscymnus crepidator",
+    "Range(in meters)": "1120 m",
+    "Range(in pixels)": 130,
+    "Origin": "Circumglobal",
+    "Description": "Its occurrence is rare and it is rarely caught in fishing nets",
+    "Scale": 5.65,
+    "Image": "./assets/Longnose-Velvet-Dogfish-Shark-01.svg",
+    "Size": 130
+  },
+  {
+    "Name": "Brownbanded bamboo shark",
+    "Scientific Name": "Chiloscyllium punctatum",
+    "Range(in meters)": "0 to 500m",
+    "Range(in pixels)": 436,
+    "Origin": "Habitats including nearshore intertidal and subtidal habitats, over sandy and muddy substrates, seagrass beds and rocky and coral reefs",
+    "Description": "Brownbanded bamboo sharks are resilient animals and are known to survive upto 12 hours without water!",
+    "Scale": 5.74,
+    "Image": "./assets/Brown-Banded-Bamboo-Shark-01.svg",
+    "Size": 132
+  },
+  {
+    "Name": "Sharpnose sevengill shark",
+    "Scientific Name": "Heptranchias perlo",
+    "Range(in meters)": "230-1500 m",
+    "Range(in pixels)": 137,
+    "Origin": "Marine benthic, deep waters, bentho-pelagic",
+    "Description": "Sharpnose sevengill sharks are a very active species and unlike most sharks it has seven (instead of five) gill slits!",
+    "Scale": 6.09,
+    "Image": "./assets/Sharp-Nose-7-Gill-Shark-01.svg",
+    "Size": 137
+  },
+  {
+    "Name": "Arabian smoothhound shark",
+    "Scientific Name": "Mustelus mosis",
+    "Range(in meters)": "0 to 170m",
+    "Range(in pixels)": 150,
+    "Origin": "Benthic, sometimes found in association with coral reefs",
+    "Description": "Arabian smoothhound sharks are known to do well in captivity.",
+    "Scale": 6.52,
+    "Image": "./assets/Arabian-Smooth-Hound-Shark-01.svg",
+    "Size": 150
+  },
+  {
+    "Name": "Broadfin shark",
+    "Scientific Name": "Lamiopsis temminckii",
+    "Range(in meters)": "0 to 50/100m",
+    "Range(in pixels)": 71,
+    "Origin": "Found only in tropical waters (India and Bangladesh).",
+    "Description": "Broadfin shark is the only surviving member of the genus Lamiopsis!",
+    "Scale": 9.04,
+    "Image": "./assets/Broad-Fin-Shark-01.svg",
+    "Size": 160
+  },
+  {
+    "Name": "Spot-tail shark",
+    "Scientific Name": "Carcharhinus sorrah",
+    "Range(in meters)": "Range",
+    "Range(in pixels)": 160,
+    "Origin": "Reef-associated and common near islands and reefs",
+    "Description": "Spot-tail sharks favouriite diet consists of bony fishes but they also like eating crustaceans and cepahlopods.",
+    "Scale": 6.96,
+    "Image": "./assets/Spot-Tail-Shark-01.svg",
+    "Size": 160
+  },
+  {
+    "Name": "Leafscale gulper shark",
+    "Scientific Name": "Centrophorus squamosus",
+    "Range(in meters)": "10-150 m",
+    "Range(in pixels)": 164,
+    "Origin": "They are demersal on continental and insular shelves and slopes to the abyss",
+    "Description": "Leafscale gulper sharks are named so because they have tiny v-shaped scales on the skin that look like leaves!",
+    "Scale": 7.13,
+    "Image": "./assets/Leaf-Scale-Gulper-Shark-01.svg",
+    "Size": 164
+  },
+  {
+    "Name": "Gulper shark",
+    "Scientific Name": "Centrophorus granulosus",
+    "Range(in meters)": "1-130 m",
+    "Range(in pixels)": 170,
+    "Origin": "They are demersal and benthopelagic on continental and insular shelves",
+    "Description": "Gulper sharks have a gestation period of 2 years and a lot of information is yet to be known.",
+    "Scale": 7.39,
+    "Image": "./assets/Gulper-Shark-01.svg",
+    "Size": 170
+  },
+  {
+    "Name": "Milk shark",
+    "Scientific Name": "Rhizoprionodon acutus",
+    "Range(in meters)": "145-2400 m",
+    "Range(in pixels)": 175,
+    "Origin": "Found on continental shelves close to sandy beaches and sometime in estuaries",
+    "Description": "Milk sharks sometimes enter freshwater habitats and we are not sure why they do so!",
+    "Scale": 7.61,
+    "Image": "./assets/Milk-Shark-01.svg",
+    "Size": 175
+  },
+  {
+    "Name": "Graceful shark",
+    "Scientific Name": "Carcharhinus amblyrhynchoides",
+    "Range(in meters)": "0 to 90m",
+    "Range(in pixels)": 182,
+    "Origin": "Commonly seen in the continental and insular shelves.",
+    "Description": "The main diet of Graceful sharks include tiny fishes along with few cephalopods and crustaceans",
+    "Scale": 7.91,
+    "Image": "./assets/Graceful-Shark-01.svg",
+    "Size": 182
+  },
+  {
+    "Name": "Winghead shark",
+    "Scientific Name": "Eusphyra blochii",
+    "Range(in meters)": "Upto 400 m",
+    "Range(in pixels)": 186,
+    "Origin": "Coastal, nearshore waters",
+    "Description": "The wide spaced eyes of winghead sharks grants excellent binocular vision especially for hunting!",
+    "Scale": 8.09,
+    "Image": "./assets/Winghead-Shark-01.svg",
+    "Size": 186
+  },
+  {
+    "Name": "Blacktip reef shark",
+    "Scientific Name": "Carcharhinus melanopterus",
+    "Range(in meters)": "0 to 350m",
+    "Range(in pixels)": 200,
+    "Origin": "Reef associated species.",
+    "Description": "Blacktip reef sharks are easily identified by observers in shallow waters because of their characterisitc protruding, rigid first dorsal fin when they swim.",
+    "Scale": 8.7,
+    "Image": "./assets/Black-Tip-Reef-Shark-01.svg",
+    "Size": 200
+  },
+  {
+    "Name": "Pondicherry shark",
+    "Scientific Name": "Carcharhinus hemiodon",
+    "Range(in meters)": "20 to 50 m",
+    "Range(in pixels)": 25,
+    "Origin": "Indo-west Pacific distribution.",
+    "Description": "No verifiable records since 1960. Life history is unknown. It is a rarely seen shark and not much is known about it.",
+    "Scale": 8.7,
+    "Image": "./assets/Pondicherry-Shark-01.svg",
+    "Size": 200
+  },
+  {
+    "Name": "Ganges shark",
+    "Scientific Name": "Glyphis gangeticus",
+    "Range(in meters)": "0 to 800m",
+    "Range(in pixels)": 699,
+    "Origin": "Endemic to India and is found in River Hoogly (West Bengal), Ganges, Brahmaputra, Mahanadi (Bihar, Assam and Odisha)",
+    "Description": "The Ganges shark is one of only six river sharks in the world. Often mistaken for a bull shark, the ganges shark also sometimes enters the sea!",
+    "Scale": 8.87,
+    "Image": "./assets/Ganges-Shark-01.svg",
+    "Size": 204
+  },
+  {
+    "Name": "Whitetip reef shark",
+    "Scientific Name": "Triaenodon obesus",
+    "Range(in meters)": "Upto 200 m",
+    "Range(in pixels)": 213,
+    "Origin": "Found near coral reefs, around caves and crevices.",
+    "Description": "Whitetip reef sharks are nocturnal sharks, that rest on ocean bottom during day and hunt at night! They don't need to constantly keep swimming in order to breathe – something only few sharks can do!",
+    "Scale": 9.26,
+    "Image": "./assets/White-Tip-Reef-Shark-01.svg",
+    "Size": 213
+  },
+  {
+    "Name": "Snaggletooth shark",
+    "Scientific Name": "Hemipristis elongata",
+    "Range(in meters)": "90 m",
+    "Range(in pixels)": 240,
+    "Origin": "Coastal",
+    "Description": "Snaggletooth sharks live at the bottom of the sea and grow >7 feet long. Despite their dangerous looking teeth, they have never attacked humans!",
+    "Scale": 10.43,
+    "Image": "./assets/Snaggle-Tooth-Shark-01.svg",
+    "Size": 240
+  },
+  {
+    "Name": "Blacktail reef/Grey reef shark",
+    "Scientific Name": "Carcharhinus amblyrhynchos",
+    "Range(in meters)": "0 to 30m (common) but found upto 100m",
+    "Range(in pixels)": 255,
+    "Origin": "Found in tropical and sub-tropical reef associated regions such as coral atolls and lagoons.",
+    "Description": "Grey reef sharks have a good starlight vision as they are very active during night.",
+    "Scale": 11.09,
+    "Image": "./assets/Grey-Reef-Shark-01.svg",
+    "Size": 255
+  },
+  {
+    "Name": "Pigeye shark",
+    "Scientific Name": "Carcharhinus amboinensis",
+    "Range(in meters)": "2-100 m",
+    "Range(in pixels)": 280,
+    "Origin": "Found in tropical waters. Reef associated.",
+    "Description": "Pigeye sharks and Bull sharks are very similar in appearence which leads to a lot of confusion!",
+    "Scale": 12.17,
+    "Image": "./assets/Pig-Eye-Shark-01.svg",
+    "Size": 280
+  },
+  {
+    "Name": "Blacktip shark",
+    "Scientific Name": "Carcharhinus limbatus",
+    "Range(in meters)": "0 to 36m",
+    "Range(in pixels)": 286,
+    "Origin": "Found in tropical and warm temperate waters. Also in estuaries, river mouths, mangrove swamps, lagoond, coral reefs",
+    "Description": "Blacktip reef shark shoot themselves out of water and rotate close of 3 times on its axis before snapping to catch prey!",
+    "Scale": 12.43,
+    "Image": "./assets/Black-Tiip-Shark-01.svg",
+    "Size": 286
+  },
+  {
+    "Name": "Bignose shark",
+    "Scientific Name": "Carcharhinus altimus",
+    "Range(in meters)": "0 to 230m",
+    "Range(in pixels)": 300,
+    "Origin": "Found in deep offshore waters on continental and insular shelves.",
+    "Description": "They feed on fish and other small sharks and rays near the sea floor.",
+    "Scale": 13.04,
+    "Image": "./assets/Big-Nose-Shark-01.svg",
+    "Size": 300
+  },
+  {
+    "Name": "Sandbar shark",
+    "Scientific Name": "Carcharhinus plumbeus",
+    "Range(in meters)": "205-1800 m",
+    "Range(in pixels)": 1500,
+    "Origin": "Inhabits temparate and tropical waters. Commonly found in esturaries, bays and harbours and river mouths.",
+    "Description": "Sandbar sharks prefer 'smooth' snad bottom and tend to avoid the hard, rocky coral reefs.",
+    "Scale": 13.04,
+    "Image": "./assets/Sandbar-Shark-01.svg",
+    "Size": 300
+  },
+  {
+    "Name": "Silvertip shark",
+    "Scientific Name": "Carcharhinus albimarginatus",
+    "Range(in meters)": "50-1400 m",
+    "Range(in pixels)": 1350,
+    "Origin": "Prefers offshore island habitats",
+    "Description": "Silvertip sharks are good hunters with unpredictable behaviour and aggressive hunting tactics. These sharks feed on animals that are found on the seafloor and in the mid-water like eagle rays, tunas, small sharks, octopus and squid.",
+    "Scale": 13.04,
+    "Image": "./assets/Silvertip-Shark-01.svg",
+    "Size": 300
+  },
+  {
+    "Name": "SPINNER SHARK",
+    "Scientific Name": "Carcharhinus brevipinna",
+    "Range(in meters)": "Around 20m",
+    "Range(in pixels)": 3,
+    "Origin": "Reef associated, found in warm temperate and tropical and sub-tropcal waters.",
+    "Description": "Spinner sharks leap and spin out of water to catch their prey!",
+    "Scale": 13.04,
+    "Image": "./assets/Spinner-Shark-01.svg",
+    "Size": 300
+  },
+  {
+    "Name": "Bramble shark",
+    "Scientific Name": "Echinorhinus brucus",
+    "Range(in meters)": "0 to 40m",
+    "Range(in pixels)": 13,
+    "Origin": "Bottom of outer continental and insular shelves, may have estuarine affinity",
+    "Description": "Bramble sharks are considered to be rather sluggish animals and have thorn like denticles on its body.",
+    "Scale": 13.48,
+    "Image": "./assets/Bramble-Shark-01.svg",
+    "Size": 310
+  },
+  {
+    "Name": "Tawny nurse shark",
+    "Scientific Name": "Nebrius ferrugineus",
+    "Range(in meters)": "surfline to 150m",
+    "Range(in pixels)": 320,
+    "Origin": "Found near coral reefs, particularly in crevices and caves, and seagrass lagoonal habitat",
+    "Description": "Tawny nurse sharks are nocturnal and form resting aggregations. They can be seen piled across or on top of one another!",
+    "Scale": 13.91,
+    "Image": "./assets/Tawny-Nurse-Shark-01.svg",
+    "Size": 320
+  },
+  {
+    "Name": "Sand tiger shark",
+    "Scientific Name": "Carcharias taurus",
+    "Range(in meters)": "200 m",
+    "Range(in pixels)": 330,
+    "Origin": "Often found on the bottom but can be seen at all levels of the water column including the surf zone.Found in shallow bays, coral and rocky reefs and around caves.",
+    "Description": "Sand tiger sharks are the only known shark that are able to gulp and store air in its stomach to maintain neutral buoyancy while swimming!",
+    "Scale": 14.35,
+    "Image": "./assets/Sand-Tiger-Shark-01.svg",
+    "Size": 330
+  },
+  {
+    "Name": "Silky shark",
+    "Scientific Name": "Carcharhinus falciformis",
+    "Range(in meters)": "50 m",
+    "Range(in pixels)": 350,
+    "Origin": "Found in topical-subtropical waters. Commonly found near the edges of continental shelves and over deepwater reefs",
+    "Description": "Silky sharks are very sensitive to sound and they are one of the most abundant pelagic sharks in the world. They also known as 'net eater shark' in the Pacific because they destroy tuna seine nets. As you guessed, their favourite food is tuna!",
+    "Scale": 15.22,
+    "Image": "./assets/Silky-Shark-01.svg",
+    "Size": 350
+  },
+  {
+    "Name": "Zebra shark",
+    "Scientific Name": "Stegostoma fasciatum",
+    "Range(in meters)": "upto 50m",
+    "Range(in pixels)": 355,
+    "Origin": "Found in tropical and sub-tropical waters. Coastal waters.",
+    "Description": "Zebra sharks are nocturnal. Sluggish during the daytime, they mainly hunt their favourite shellfish and crustaceans at night.",
+    "Scale": 15.39,
+    "Image": "./assets/Zebra-Shark-01.svg",
+    "Size": 354
+  },
+  {
+    "Name": "Bull shark",
+    "Scientific Name": "Carcharhinus leucas",
+    "Range(in meters)": "0 to 50m (common) even upto 1000m",
+    "Range(in pixels)": 360,
+    "Origin": "Enters estuaries, bays, lagoons and river mouths. Found in tropical and sub-tropical waters.",
+    "Description": "Bull sharks are name so because they first head butt their prey before attacking and eating them. These sharks are aggressive and was the insipiration behind a popular book that was later made into a movie – Jaws, 1914.",
+    "Scale": 17.39,
+    "Image": "./assets/Bull-Shark-01.svg",
+    "Size": 360
+  },
+  {
+    "Name": "Sicklefin lemon shark",
+    "Scientific Name": "Negaprion acutidens",
+    "Range(in meters)": "250-500 m",
+    "Range(in pixels)": 380,
+    "Origin": "Commonly found on coral reefs and sandy plateaus.",
+    "Description": "Sicklefin lemon sharks are very shy animals! They usually stay away from humans (unless provoked) even when a bait is presented.",
+    "Scale": 16.52,
+    "Image": "./assets/Sickle-Fin-Lemon-Shark-01.svg",
+    "Size": 380
+  },
+  {
+    "Name": "Blue shark",
+    "Scientific Name": "Prionace glauca",
+    "Range(in meters)": "0 to 400m",
+    "Range(in pixels)": 400,
+    "Origin": "Found in open water of tropical and temperate regions.",
+    "Description": "Females and males of blue sharks are distinct (sexual dimorphism), with females growing larger with has thicker skins.",
+    "Scale": 17.39,
+    "Image": "./assets/Blue-Shark-01.svg",
+    "Size": 400
+  },
+  {
+    "Name": "Oceanic whitetip shark",
+    "Scientific Name": "Carcharhinus longimanus",
+    "Range(in meters)": "170 m",
+    "Range(in pixels)": 400,
+    "Origin": "Found in open ocean. In epipelagic tropical and sub-tropical waters",
+    "Description": "Oceanic whitetip sharks  are one of the most threatened sharks which come under Appendix II of the CITES. They are sometimes found to hang around pilot whales.",
+    "Scale": 17.39,
+    "Image": "./assets/White-Tip-Reef-Shark-01.svg",
+    "Size": 213
+  },
+  {
+    "Name": "Dusky shark",
+    "Scientific Name": "Carcharhinus obscurus",
+    "Range(in meters)": "0 to 650m (but most common in 100 to 150m)",
+    "Range(in pixels)": 420,
+    "Origin": "Found in tropical and warm temperate waters.",
+    "Description": "Dusky sharks have a diverse diet as they are known to feed on bottom dwellling and pelagic bony fishes, sharks, rays, saktes, cephalopods, gastropods, crustaceans and mammalian carrions. They also feed on inorganic objects!.",
+    "Scale": 18.26,
+    "Image": "./assets/Dusky-Shark-01.svg",
+    "Size": 420
+  },
+  {
+    "Name": "Longfinmako shark",
+    "Scientific Name": "Isurus paucus",
+    "Range(in meters)": "110-2195 m",
+    "Range(in pixels)": 2111,
+    "Origin": "Found in warm tropical and temperate waters and in open ocean.",
+    "Description": "The longfin mako shark was described just twenty years ago (in 2001). The females give birth to only 2 pups at a time, in shallow water. The rest of their life is spent far away from coasts, in the open ocean.",
+    "Scale": 18.57,
+    "Image": "./assets/Long-Fin-Mako-Shark-01.svg",
+    "Size": 427
+  },
+  {
+    "Name": "Pelagic thresher shark",
+    "Scientific Name": "Alopias pelagicus",
+    "Range(in meters)": "183-450 m",
+    "Range(in pixels)": 428,
+    "Origin": "Found in warm offshore surface waters of open ocean.",
+    "Description": "Pelagic thresher sharks use their long tail to whip small fish and squid, and stun them. Then the shark can quickly make a U-turn and gobble them up! This is the smallest of the 3 thresher sharks that we find in India",
+    "Scale": 18.61,
+    "Image": "./assets/Pelagic-Shark-01.svg",
+    "Size": 428
+  },
+  {
+    "Name": "Scalloped hammerhead",
+    "Scientific Name": "Sphyrna lewini",
+    "Range(in meters)": "2200 m",
+    "Range(in pixels)": 430,
+    "Origin": "Near deep waters to intertidal",
+    "Description": "Scalloped hammerhead adults are known to occur solitary, in pairs and even in schools! While juveniles occur in schools.",
+    "Scale": 18.7,
+    "Image": "./assets/Scalloped-Hammerhead-Shark-01.svg",
+    "Size": 430
+  },
+  {
+    "Name": "Shortfinmako shark",
+    "Scientific Name": "Isurus oxyrinchus",
+    "Range(in meters)": "25 to 450 m",
+    "Range(in pixels)": 445,
+    "Origin": "Truly pelagic species. Found in warm tropical and temperate waters.",
+    "Description": "Shortfin mako sharks are the fastest shark in the world! They can reach swimming speeds upto 70km/hr and can be seen breaching the water surface while feeding",
+    "Scale": 19.35,
+    "Image": "./assets/Short-Fin-Mako-Shark-01.svg",
+    "Size": 445
+  },
+  {
+    "Name": "Small-tooth sand tiger shark",
+    "Scientific Name": "Odontaspis ferox",
+    "Range(in meters)": "70 m",
+    "Range(in pixels)": 450,
+    "Origin": "They mainly live close to the seabed around islands and underwater seamounts characterised by narrow, steeply sloping shelves, or in the deep waters of continental outer shelves and upper slopes of larger land masses",
+    "Description": "Smalltooth sand tiger shark's Liver has high squalene content. They are known to show intrautrine cannibalism!",
+    "Scale": 19.57,
+    "Image": "./assets/Small-Tooth-Sand-Tiger-Shark-01.svg",
+    "Size": 450
+  },
+  {
+    "Name": "Big eye thersher shark",
+    "Scientific Name": "Alopias superciliosus",
+    "Range(in meters)": "0 to 200/400m",
+    "Range(in pixels)": 488,
+    "Origin": "Found in warm temperate and tropical waters, occasionally enters shallow waters close to the coast.",
+    "Description": "As the name suggests, big-eye thresher sharks have large eyes that help them to see in low light! They come to the water surface at night and dive to great depths during the day. Like pelagic thresher shark it uses its tail to stun the prey and eat them!",
+    "Scale": 21.22,
+    "Image": "./assets/Big-Eye-Thresher-Shark-01.svg",
+    "Size": 488
+  },
+  {
+    "Name": "Smooth hammerhead",
+    "Scientific Name": "Sphyrna zygaena",
+    "Range(in meters)": "75 -98 m",
+    "Range(in pixels)": 500,
+    "Origin": "Widespread in temperate and tropical seas, coastal and semi-oceanic, pelagic",
+    "Description": "In the summer, smooth hammerhead sharks are known to migrate towards the poles in large schools of hundreds to even thousands of individuals!",
+    "Scale": 21.74,
+    "Image": "./assets/Smooth-Hammerhead-Shark-01.svg",
+    "Size": 500
+  },
+  {
+    "Name": "Common thresher shark",
+    "Scientific Name": "Alopias vulpinus",
+    "Range(in meters)": "0 to 59m",
+    "Range(in pixels)": 573,
+    "Origin": "It is an oceanic and coastal species. Found in tropical as well as cold temperate waters.",
+    "Description": "Common thresher sharks are the largest of the three thresher sharks. They are fast swimmers and they can even be seen leaping out of water!",
+    "Scale": 24.91,
+    "Image": "./assets/Common-Thresher-Shark-01.svg",
+    "Size": 573
+  },
+  {
+    "Name": "Great hammerhead",
+    "Scientific Name": "Sphyrna mokarran",
+    "Range(in meters)": "1 - 300 m",
+    "Range(in pixels)": 610,
+    "Origin": "Bottom dwelling and reef associated",
+    "Description": "Great hammerhead sharks are the largest species of hammerhead in the world.",
+    "Scale": 26.52,
+    "Image": "./assets/Great-Hammerhead-Shark-01.svg",
+    "Size": 610
+  },
+  {
+    "Name": "Tiger shark",
+    "Scientific Name": "Galeocerdo cuvier",
+    "Range(in meters)": "Upto 1000 m",
+    "Range(in pixels)": 750,
+    "Origin": "Found in tropical and temperate waters and also found in estuaries and harbours.",
+    "Description": "Tiger sharks are seasonal migrants, who travel to temparate waters from tropics during warmers months and vice versa during winter. Even though they are slow-moving, they can effectively ambush predators and also uses short bursts to capture prey.",
+    "Scale": 32.61,
+    "Image": "./assets/Tiger-Shark-01.svg",
+    "Size": 750
+  },
+  {
+    "Name": "Whale shark",
+    "Scientific Name": "Rhincodon typus",
+    "Range(in meters)": "Upto 144 m",
+    "Range(in pixels)": 131,
+    "Origin": "Found throughout tropical and warm temperate waters. Found to ocassionally enter coral atolls and lagoons.",
+    "Description": "Whale sharks are the largest fish in our seas and oceans! They are filter feeders, meaning they feed on tiny floating food matter and particles like zooplakton and phytoplantons.",
+    "Scale": 86.96,
+    "Image": "./assets/Whale-Shark-01.svg",
+    "Size": 1700
   }
-  $(".depth-line span").text(scrollTop);
-});
+]
 
-const Data = [
-  {
-    range: 5,
-    actualRange: 5,
-    Image: "./assets/Black-Spot-Shark-01.svg",
-  },
-  {
-    range: 1,
-    actualRange: 5,
-    Image: "./assets/Spinner-Shark-01.svg",
-  },
-  {
-    range: 50,
-    actualRange: 700,
-    Image: "./assets/Dusky-Shark-01.svg",
-  },
-  {
-    range: 400,
-    actualRange: 900,
-    Image: "./assets/Dwarf-Gulper-Shark-01.svg",
-  },
-  {
-    range: 1200,
-    actualRange: 10,
-    Image: "./assets/Black-Spot-Shark-01.svg",
-  },
-  {
-    range: 850,
-    actualRange: 1200,
-    Image: "./assets/Blue-Shark-01.svg",
-  },
-  {
-    range: 1800,
-    actualRange: 100,
-    Image: "./assets/Arrowhead-Dogfish-Shark-01.svg",
-  },
-  {
-    range: 1700,
-    actualRange: 800,
-    Image: "./assets/Arabian-Smooth-Hound-Shark-01.svg",
-  },
-];
+// const showOnPx = 5000;
+// const backToTopButton = document.querySelector(".back-to-top")
 
-function displayShark(sharkData) {
+// const scrollContainer = () => {
+//   return document.documentElement || document.body;
+// };
+
+// document.addEventListener("scroll", () => {
+//   if (scrollContainer().scrollTop > showOnPx) {
+//     backToTopButton.classList.remove("hidden")
+//   } else {
+//     backToTopButton.classList.add("hidden")
+//   }
+// })
+
+// document.addEventListener("scroll", () => {
+//   if (scrollContainer().scrollTop > showOnPx) {
+//     backToTopButton.classList.remove("hidden")
+//   } else {
+//     backToTopButton.classList.add("hidden")
+//   }
+// })
+
+// const goToTop = () => {
+//   document.body.scrollIntoView({
+//     behavior: "smooth",
+//   });
+// };
+// backToTopButton.addEventListener("click", goToTop)
+
+const pixels_per_meter = 100;
+
+const ocean_height = document.getElementById("ocean-container").offsetHeight;
+
+
+
+// document.getElementById("depth-bar").style.height = (ocean_height-500).toString()+"px";
+const depth_bar_height = document.getElementById("depth-bar").offsetHeight;
+const marking = document.getElementById("depth-bar").lastChild
+
+for (let i = 0; i < depth_bar_height/pixels_per_meter; i=i+10) {
+  if(i>0){
+    const clone = marking.cloneNode()
+    clone.textContent=i+" meters"
+    clone.style.position = "absolute";
+    clone.style.top=(i+(i-1)*pixels_per_meter).toString()+"px" 
+    document.getElementById("depth-bar").appendChild(clone)
+  }
+}
+
+
+const MIN_DEPTH = 0;
+const MAX_DEPTH = 250000;
+const firstPageHeight = document.getElementById("sunlight-zone").getBoundingClientRect().top + window.scrollY;
+const screenHeight = $(window).height();
+
+// Show depth
+$(document).scroll(() => {
+  var scrollLength = $(window).scrollTop() -firstPageHeight+ screenHeight*0.75;
+  depthValue = (scrollLength>=0) ?  Math.ceil(scrollLength/pixels_per_meter) : 0
+  
+  if(scrollLength <= MIN_DEPTH || scrollLength >= MAX_DEPTH){
+    scrollLength = (scrollLength >= MAX_DEPTH)? MAX_DEPTH : MIN_DEPTH;
+    $(".depth-line").css('opacity', '0');
+  }
+  else{
+    $(".depth-line").css('opacity', '1');
+  }
+  $(".depth-line span").text(depthValue)
+})
+
+
+function displayShark(sharkData){
   for (let i = 0; i < sharkData.length; i++) {
     const shark = sharkData[i];
-    const sharkScope = shark["range"];
-    const sharkHeight = shark["actualRange"];
+    const sharkRange = shark["Range(in pixels)"];
+    const sharkHeight = (firstPageHeight+(sharkRange*pixels_per_meter)+(500*i)/pixels_per_meter) - 478/2;
 
     const rand_one = Math.random();
-    const align = rand_one >= 0.5 ? "start" : "end";
-
+    const sharkName = document.createElement("p");
     const sharkDiv = document.createElement("div");
     const sharkDivCol = document.createElement("div");
     const sharkImg = document.createElement("img");
+    const sharkPopUp = document.createElement("div");
+    sharkName.innerText = shark["Name"];
+    sharkDiv.id=i;
 
-    sharkDiv.id = String(i);
-    sharkDiv.classList.add("row", "justify-content-" + align);
-    sharkDiv.setAttribute("style", "top:" + sharkHeight + "px");
+    let align="start";
+    if(i==0){
+      align = (rand_one>=0.5) ? "start" : "end"
+    }else if(document.getElementById(i-1).classList.contains("justify-content-start")){
+      align="end"
+    }
+   
+    sharkDiv.classList.add("row","justify-content-"+align) 
     sharkDivCol.classList.add("col-6");
-    sharkImg.classList.add("img");
-    sharkImg.setAttribute("src", shark["Image"]);
-
-    sharkImg.setAttribute("onclick", `PopUp(${i})`);
-
-    const sharkPop = document.createElement("div");
-    sharkPop.id = String(i + 100);
-    sharkPop.classList.add("popup", "flex");
-
-    const sharkClose = document.createElement("div");
-    sharkClose.classList.add("close");
-    sharkClose.setAttribute("onclick", "this.parentElement.hidden='true'");
-    sharkClose.innerHTML = "X";
-
-    const sharkImage = document.createElement("div");
-    sharkImage.classList.add("image");
-
-    const sharkPhoto = document.createElement("img");
-    sharkPhoto.classList.add("photo");
-    sharkPhoto.id = String(i + 200);
-    sharkPhoto.setAttribute("src", "");
-    sharkPhoto.setAttribute("alt", "broken");
-
-    const sharkName = document.createElement("div");
-    sharkName.classList.add("name");
-
-    const sharkSci_Name = document.createElement("div");
-    sharkSci_Name.classList.add("sci_name");
-
-    const sharkRange_Hard = document.createElement("div");
-    sharkRange_Hard.classList.add("range_hard");
-    sharkRange_Hard.innerHTML = "RANGE";
-
-    const sharkRange = document.createElement("div");
-    sharkRange.classList.add("range");
-
-    const sharkSize_Hard = document.createElement("div");
-    sharkSize_Hard.classList.add("size_hard");
-    sharkSize_Hard.innerHTML = "SIZE";
-
-    const sharkSize = document.createElement("div");
-    sharkSize.classList.add("size");
-
-    const sharkHab_Hard = document.createElement("div");
-    sharkHab_Hard.classList.add("hab_hard");
-    sharkHab_Hard.innerHTML = "HABITAT";
-
-    const sharkHab = document.createElement("div");
-    sharkHab.classList.add("hab");
-
-    const sharkFun_Hard = document.createElement("div");
-    sharkFun_Hard.classList.add("fun_hard");
-    sharkFun_Hard.innerHTML = "FUN FACT";
-
-    const sharkFun = document.createElement("div");
-    sharkFun.classList.add("fun");
-
-    sharkPop.append(
-      sharkClose,
-      sharkImage,
-      sharkName,
-      sharkSci_Name,
-      sharkRange_Hard,
-      sharkRange,
-      sharkSize_Hard,
-      sharkSize,
-      sharkHab_Hard,
-      sharkHab,
-      sharkFun_Hard,
-      sharkFun
-    );
-    sharkImage.appendChild(sharkPhoto);
-
+    sharkImg.classList.add("img","trigger");
+    sharkName.classList.add("p","trigger");
+    sharkName.id = i;
+    sharkImg.id = i;
+    sharkImg.setAttribute("onclick","PopUp(this.id)");
+    sharkName.setAttribute("onclick","PopUp(this.id)");
+    sharkImg.setAttribute("src",shark["Image"]);
+  
+    sharkName.setAttribute("data-bs-toggle","modal");
+    sharkImg.setAttribute("data-bs-toggle","modal");
+    sharkImg.setAttribute("data-bs-target","#popUp");
+    sharkName.setAttribute("data-bs-target","#popUp");
+    sharkImg.setAttribute("style","top:"+sharkHeight+"px"); 
+    // sharkName.setAttribute("style","top:"+(sharkHeight-2000)+"px"); 
+   
+    sharkPopUp.setAttribute("id",i);    
+    // const textNode = document.createTextNode(shark["Name"]);
+    // sharkName.appendChild(textNode);
     sharkDivCol.appendChild(sharkImg);
+    // sharkDivCol.appendChild(sharkName);
     sharkDiv.appendChild(sharkDivCol);
-
-    if (sharkScope >= 200 && sharkScope < 1000) {
-      document.getElementById("twilight-zone").append(sharkDiv, sharkPop);
-    } else if (sharkScope >= 1000) {
-      document.getElementById("midnight-zone").append(sharkDiv, sharkPop);
-    } else {
-      document.getElementById("sunlight-zone").append(sharkDiv, sharkPop);
+    
+    if(sharkRange>=200 && sharkRange<1000){
+      document.getElementById("twilight-zone").appendChild(sharkDiv);
+    }else if(sharkRange>=1000){
+      document.getElementById("midnight-zone").appendChild(sharkDiv);
+    }else{
+      document.getElementById("sunlight-zone").appendChild(sharkDiv);
     }
 
-    document.getElementById(`${i + 100}`).hidden = true;
+
+  }
+  
+};
+
+displayShark(data);
+
+
+function PopUp(div_ID){
+  const shark = data[div_ID]
+
+  const renderer = document.getElementById("100");
+  
+  // set data: use class_names for selects & renders
+  renderer.querySelector(".name").innerHTML = shark["Name"];
+  renderer.querySelector(".sci_name").innerHTML = shark["Scientific Name"];
+  renderer.querySelector(".range").innerHTML = shark["Range(in meters)"];
+  renderer.querySelector(".size").innerHTML = shark["Size"] + " CM";
+  renderer.querySelector(".hab").innerHTML = shark["Origin"];
+  renderer.querySelector(".fun").innerHTML = shark["Description"];
+  
+
+  // get photo, HTML photo_ID & render
+  const photo_location = shark["Image"];
+  document.getElementById("200").src = photo_location;
+  
+
+}
+
+
+const mybutton = document.getElementById("top-button");
+
+window.onscroll = function() {showGoTop()};
+function showGoTop() {
+  if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+    mybutton.style.display = "block";
+  } else {
+    mybutton.style.display = "none";
   }
 }
 
-function PopUp(div_ID) {
-  const shark = sharkPopData[div_ID];
-  const pop_ID = String(parseInt(div_ID) + 100);
-  const renderer = document.getElementById(`${pop_ID}`);
-
-  renderer.querySelector(".name").innerHTML = shark.name + " SHARK";
-  renderer.querySelector(".sci_name").innerHTML = shark.sci_name;
-  renderer.querySelector(".range").innerHTML = shark.range + " M";
-  renderer.querySelector(".size").innerHTML = shark.size + " M";
-  renderer.querySelector(".hab").innerHTML = shark.habitat;
-  renderer.querySelector(".fun").innerHTML = shark.fun_fact;
-
-  const photo_location = "./assets/" + shark.image_src;
-  const photo_ID = parseInt(div_ID) + 200;
-  document.getElementById(`${photo_ID}`).src = photo_location;
-
-  renderer.hidden = false;
+function goTop() {
+  document.body.scrollTop = 0; // Safari
+  document.documentElement.scrollTop = 0; // Chrome, Firefox, IE and Opera
 }
 
-document.addEventListener(
-  "click",
-  function (event) {
-    if (event.target.matches("popup") || event.target.matches("img")) {
-      return;
-    }
-    for (let element of document.getElementsByClassName("popup")) {
-      element.hidden = true;
-    }
-  },
-  false
-);
 
-displayShark(Data);
-
-//   TODOs:
-// - add range(?) & actualRange to shark_cleaned.xlxs & preserve order!
-// - JSON(shark_cleaned.xlxs)
-// - update sharkPopData & use displayShark(sharkPopData)
-// - change PopUp photo area; too large as of today
+// document.addEventListener(
+//   "click",
+//   function (event) {
+//     // if event doesn't have the correct selector, end task
+//     if (
+//       event.target.matches("popup") ||
+//       event.target.closest(".popup") ||
+//       event.target.matches("trigger") ||
+//       event.target.closest(".trigger")
+//     ) {
+//       return;
+//     }
+//     for (let element of document.getElementsByClassName("popup")) {
+//       if (element.hidden == false) {
+//         element.hidden = true;
+//       }
+//     }
+//   },
+//   false
+// );

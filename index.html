@@ -11,7 +11,8 @@
       rel="stylesheet"
       integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
       crossorigin="anonymous">
-    <link rel="stylesheet" href="index.css">
+      <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@700&display=swap" rel="stylesheet">
+      <link rel="stylesheet" href="index.css">
     <noscript>Sorry, your browser does not have JavaScript enabled!</noscript>
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
@@ -30,66 +31,154 @@
   <body>
 
     <div class="container-fluid p-0">
+
+      <!-- Scroll Top -->
+      <button onclick="goTop()" id="top-button">TOP</button>
+      
       <!-- Navbar -->
       <div class="bg-image image">
         <div class="home-container">
-          <img class="image1" src="./assets/sharker_header_text.png" alt="Header">
-            <p class="text-break">Take a deep dive into the fascinating world of India's sharks. Click the shark to learn more.
+          <img class="image1" src="./assets/sharker_header_text.png"
+            alt="Header">
+            
+          <p class="text-break">Take a deep dive into the fascinating world of
+            India's sharks.<br /> Click the shark to learn more.
           </p>
-          <div class="first-page-offset">
-            <img class="wf1" src="./assets/lineDrawn_fishes-1.png" alt="Wireframe">
-            <img class = "wf2" src="./assets/lineDrawn_fishes-2.png" alt="wireframe">
-            <img class = "line" src="./assets/20m.svg" >
-            <img class = "line1" src="./assets/40m (1).svg" >
-          </div> 
+          <img class="wf1" src="./assets/lineDrawn_fishes-1.png"
+          alt="Wireframe">
+          <img class="wf2" src="./assets/lineDrawn_fishes-2.png"
+          alt="wireframe">
         </div>
       </div>
+      
+      <div class="modal fade" tabindex="-1" id="popUp">
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-body rounded-3">
 
-      <div class="container-fluid p-0" id="ocean-container">
-        <div class="depth-line"><span id="depth">0</span> METERS DEEP</div>
-        <div id="sunlight-zone"> 
-        <img class = "wf3" src="./assets/lineDrawn_fishes-3.png" >
-        
+            <div id="100" class="popup flex">
+              <div class="container-fluid" id="popUp_modal">
+                <div class="row">
+                  <div class="col-11">
+  
+                    <div class="image-popup"><img class="photo" id="200" src="" alt="broken"></div>
+                  </div>
+                  <div class="col-1">
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                </div>
+
+                <div class="border border-2 border-dark overflow-hidden">
+
+                <div class="row px-2 border-2 border-bottom border-dark">
+                  <div class="col-6 border-2 border-end border-dark">
+                    
+                    <div class="name"></div>
+                    <div class="sci_name"></div>
+                  </div>
+                  <div class="col-3 border-2 border-end border-dark">
+                    <div class="range_hard">RANGE</div>
+                    <div class="range"></div>
+                    
+                  </div>
+                  <div class="col-3">
+                    <div class="size_hard">SIZE</div>
+                    <div class="size"></div>
+                    
+                  </div>
+                </div>
+                <div class="row my-2 px-2">
+                  <div class="col">
+                    <div class="hab_hard">HABITAT</div>
+                    <div class="hab"></div>
+  
+                  </div>
+                </div>
+                <div class="row mb-2 px-2">
+                  <div class="col">
+                    <div class="fun_hard">FUN FACT</div>
+  
+                    <div class="fun"></div>
+                  </div>
+                </div>
+
+                </div>
+
+              </div>
+  
+                </div>
+          </div>
         </div>
-      
-      <div id="twilight-zone">
-        <div class="zone-container"><span class="zone">TWILIGHT ZONE 200m</span></div>
-       </div>
-      <div id="midnight-zone">
-        <div class="zone-container"><span class="zone">MIDNIGHT ZONE 1000m</span></div>
-      </div>
-      <!-- <div class="abyssal-zone">
-        <div class="zone-container"><span class="zone">ABYSSAL ZONE 4000m</span></div>
-      </div>
-      <div class="hadal-zone">
-        <div class="zone-container"><span class="zone">HADAL ZONE 6000m</span></div>
-      </div> -->
-      
-      <svg class="p-0 m-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1237.08 15">
-        <defs>
-          <style>
+        </div>
+      <!-- <button class="back-to-top">Back To Top</button> -->
+      <!-- <button class="back-to-top hidden">
+        <svg
+         xmlns="http://www.w3.org/2000/svg" 
+         fill="none" 
+         viewBox="0 0 24 24"
+         stroke-width="1.5"
+         stroke="currentColor"
+        class="w-6 h-6">
+          
+        <path
+         stroke-linecap="round"
+        stroke-linejoin="round"
+        d="M12 19.5v-15m0 0l-6.75 6.75M12 4.5l6.75 6.75" />
+        </svg> -->
+        
+        
+      </button>
+      <button class="slow">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 17.25L12 21m0 0l-3.75-3.75M12 21V3" />
+        </svg>
+        
+        
+        
+      </button>
+
+      <div class="depth-line"><span id="depth">0</span> METERS DEEP</div>
+      <div class="container-fluid p-0" id="ocean-container">
+        <div class="first-page-offset"></div>
+        <div id="depth-bar"><div class="marking"></div></div>
+        <div id="sunlight-zone">
+          <img class="wf3" src="./assets/lineDrawn_fishes-3.png">
+        </div>
+
+        <div id="twilight-zone">
+          <div class="zone-container"><span class="zone">TWILIGHT ZONE 200m</span></div>
+        </div>
+        <div id="midnight-zone">
+          <div class="zone-container"><span class="zone">MIDNIGHT ZONE 1000m</span></div>
+        </div>
+        
+        <svg class="p-0 m-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0
+          1237.08 15">
+          <defs>
+            <style>
             .cls-1 {
               fill: #ede5ce;
             }
           </style>
-        </defs>
-        <title>ocean-bottom-top_4</title>
-        <g id="Layer_2" data-name="Layer 2">
-          <g id="Layer_1-2" data-name="Layer 1">
-            <path class="cls-1"
-              d="M0,15S55-3.3,102,.76,163,16,190,13.47c38.2-3.55,80-7.11,107-6.1s76,3.56,76,3.56S443,1.27,466,.25s71,4.58,91,8.14S599.81,15,621,15" />
-            <path class="cls-1"
-              d="M616.08,14.87s55-18.31,102-14.24,61,15.23,88,12.71c38.2-3.56,80-7.12,107-6.1s76,3.56,76,3.56,70-9.66,93-10.68,71,4.58,91,8.14,42.81,6.61,64,6.61" />
-          </g>
-        </g>
-      </svg>
+          </defs>
+          <title>ocean-bottom-top_4</title>
+          <g id="Layer_2" data-name="Layer 2">
+            <g id="Layer_1-2" data-name="Layer 1">
+              <path class="cls-1"
+                d="M0,15S55-3.3,102,.76,163,16,190,13.47c38.2-3.55,80-7.11,107-6.1s76,3.56,76,3.56S443,1.27,466,.25s71,4.58,91,8.14S599.81,15,621,15"
+                />
+                <path class="cls-1"
+                  d="M616.08,14.87s55-18.31,102-14.24,61,15.23,88,12.71c38.2-3.56,80-7.12,107-6.1s76,3.56,76,3.56,70-9.66,93-10.68,71,4.58,91,8.14,42.81,6.61,64,6.61"
+                  />
+                </g>
+              </g>
+            </svg>
 
-    <div class="ocean-bottom">
-      Sasta Footer
-    </div> 
+            <div class="ocean-bottom">
+              Sasta Footer
+            </div>
+          </div>
+        </div>
       </div>
-    </div>    
-  </div>
     </body>
 
   </html>
