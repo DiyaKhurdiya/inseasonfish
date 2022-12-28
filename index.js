@@ -759,10 +759,44 @@ data=[
     "Size": 1700
   }
 ]
+
+// const showOnPx = 5000;
+// const backToTopButton = document.querySelector(".back-to-top")
+
+// const scrollContainer = () => {
+//   return document.documentElement || document.body;
+// };
+
+// document.addEventListener("scroll", () => {
+//   if (scrollContainer().scrollTop > showOnPx) {
+//     backToTopButton.classList.remove("hidden")
+//   } else {
+//     backToTopButton.classList.add("hidden")
+//   }
+// })
+
+// document.addEventListener("scroll", () => {
+//   if (scrollContainer().scrollTop > showOnPx) {
+//     backToTopButton.classList.remove("hidden")
+//   } else {
+//     backToTopButton.classList.add("hidden")
+//   }
+// })
+
+// const goToTop = () => {
+//   document.body.scrollIntoView({
+//     behavior: "smooth",
+//   });
+// };
+// backToTopButton.addEventListener("click", goToTop)
+
 const pixels_per_meter = 100;
 
 const ocean_height = document.getElementById("ocean-container").offsetHeight;
-document.getElementById("depth-bar").style.height = (ocean_height-500).toString()+"px";
+
+
+
+// document.getElementById("depth-bar").style.height = (ocean_height-500).toString()+"px";
 const depth_bar_height = document.getElementById("depth-bar").offsetHeight;
 const marking = document.getElementById("depth-bar").lastChild
 
@@ -811,6 +845,7 @@ function displayShark(sharkData){
     const sharkName = document.createElement("div");
     const sharkImg = document.createElement("img");
     const sharkPopUp = document.createElement("div");
+    sharkName.innerText = shark["Name"];
 
     sharkDiv.id=i;
 
@@ -823,7 +858,7 @@ function displayShark(sharkData){
    
     sharkDiv.classList.add("row","justify-content-"+align) 
     sharkDivCol.classList.add("col-6");
-    sharkName.classList.add("img","shark-name");
+    sharkName.classList.add("img","trigger","shark-name");
     sharkImg.classList.add("img","trigger");
     sharkName.id = i;
     sharkName.innerHTML = shark["Name"].toUpperCase();
@@ -875,8 +910,9 @@ function PopUp(div_ID){
   
 
   // get photo, HTML photo_ID & render
-  const photo_location = shark["Image"]
+  const photo_location = shark["Image"];
   document.getElementById("200").src = photo_location;
+  
 
 }
 
