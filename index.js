@@ -870,6 +870,25 @@ function PopUp(div_ID){
   document.getElementById("200").src = photo_location;
 
 }
+
+
+const mybutton = document.getElementById("top-button");
+
+window.onscroll = function() {showGoTop()};
+function showGoTop() {
+  if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+    mybutton.style.display = "block";
+  } else {
+    mybutton.style.display = "none";
+  }
+}
+
+function goTop() {
+  document.body.scrollTop = 0; // Safari
+  document.documentElement.scrollTop = 0; // Chrome, Firefox, IE and Opera
+}
+
+
 // document.addEventListener(
 //   "click",
 //   function (event) {
