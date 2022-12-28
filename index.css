@@ -182,7 +182,7 @@ p {
   justify-content: center;
 }
 
-.back-to-top {
+/* .back-to-top {
   position: fixed;
   scroll-behavior: smooth;
   right: 2rem;
@@ -195,7 +195,7 @@ p {
   cursor: pointer;
   opacity: 100%;
   transition: opacity 1s;
-}
+} */
 
 .slow {
   position: absolute;
@@ -274,11 +274,6 @@ p {
   padding: 0px !important;
 }
 
-photo1{
-  font-family: 'Courier New', Courier, monospace;
-  font-size: large;
-  color: aliceblue;
-}
 
 @media (min-width: 576px){
   .modal-dialog {
