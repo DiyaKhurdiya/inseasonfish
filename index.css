@@ -1,18 +1,9 @@
-/* @media screen and (max-width: 768px) {
- 
-.image1 {
-  position: relative;
-  width: 70vw;
+@media only screen and (max-width: 770px){
+  .img.trigger{
+    width: 100vw;
+    height: 70vh;
+  }
 }
- 
-} */
-
-/* Total height of Ocean Container - 67824px
-Number of sharks = 70
-There is 955.2676px or 955px for each shark
-
-Accounting some free space, say the space of 71 more sharks
-Each division required will have 477.6338px or 478px */
 
 html{
   height: 100%;
@@ -24,16 +15,10 @@ body {
   font-family: Roboto, sans-serif;
   overflow-y: auto;
   overflow-x: hidden;
-  /* background-image: url("./assets/sharkposter-bg.jpg"); */
-  /* background-size: cover; */
-  /* background-color: lightblue; */
   max-width: 100%;
-  /* background-repeat: no-repeat; */
 }
 
 
-/* height: 1902px; */
-/* display: inline; */
 .image {
   background-image: url('./assets/sharkPoster_header_01.jpg');
   height: 1000px;
@@ -93,12 +78,9 @@ p {
   position: relative;
   top: 120px;
   left: 100px;
-  font-size: 1.5rem;
-  /* margin-left: 120px; */
+  font-size: 1.1rem;
   width: 60vw;
-  /* margin-right: 700px; */
-  font-family: 'Times New Roman', Times, serif;
-  
+  font-family: 'Times New Roman', Times, serif
 }
 
 .first-page-offset div{
@@ -119,14 +101,6 @@ p {
   opacity: 0;
   color: white;
 }
-
-/* .marking{
-  color: white;
-  position: relative;
-  top: 1000px;
-  margin-left: 8px;
-  width: 100px;
-} */
 
 #sunlight-zone {
   height: 20000px;
@@ -159,7 +133,7 @@ p {
 
 .img{
   position: absolute;
-  height: 478px;
+  height: 378px;
   width: 700px;
 }
 

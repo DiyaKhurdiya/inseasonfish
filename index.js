@@ -790,6 +790,23 @@ data=[
 // };
 // backToTopButton.addEventListener("click", goToTop)
 
+
+// Chaitanya Internship: website review points:
+// 1. shark images need to be bigger and scale responsively. Currently, they seem to the same size irrespective of the page size
+// [12:53, 12/15/2022] Chaitanya Internship: 2. the repetition of depth indicator both in the centre and left is unnecessary. We can remove the left side depth marker
+// [12:53, 12/15/2022] Chaitanya Internship: 3. There are a lot of blank sections - as you scroll down, i think it is because there are no sharks available at that depth. However, can we avoid the same while scrolling.
+// [12:53, 12/15/2022] Chaitanya Internship: especially between 800-1600m there are no sharks and the user has to scroll through blank sections
+// [12:53, 12/15/2022] Chaitanya Internship: 4. Can we display the name of the shark in the home view. The shark image or the name can be clicked to launch the info popup
+// [12:53, 12/15/2022] Chaitanya Internship: 5. I will provide a footer design
+// [12:54, 12/15/2022] Chaitanya Internship: 6. A button - to scroll to the top is useful, perhaps it can be kept on the bottom right. (optional)
+// [12:54, 12/15/2022] Chaitanya Internship: 7. I will provide line drawing of other marine life and things which can use placed on the background of the sharks based on depth, so that the bkg. does not look so empty or boring.
+// [12:54, 12/15/2022] Chaitanya Internship: 8. Shark images seemed to get clipped at a certain point while resizing the browser window. Can this be avoided.
+
+
+if (window.innerWidth<=768) {
+  screen.orientation.lock("landscape-primary");
+}
+
 const pixels_per_meter = 100;
 
 const ocean_height = document.getElementById("ocean-container").offsetHeight;
@@ -857,7 +874,7 @@ function displayShark(sharkData){
     }
    
     sharkDiv.classList.add("row","justify-content-"+align) 
-    sharkDivCol.classList.add("col-6");
+    sharkDivCol.classList.add("col-md-6");
     sharkName.classList.add("img","trigger","shark-name");
     sharkImg.classList.add("img","trigger");
     sharkName.id = i;
@@ -871,6 +888,7 @@ function displayShark(sharkData){
     sharkImg.setAttribute("src",shark["Image"]);
     sharkImg.setAttribute("data-bs-toggle","modal");
     sharkImg.setAttribute("data-bs-target","#popUp");
+    // sharkImg.setAttribute("loading","lazy")
     sharkImg.setAttribute("style","top:"+sharkHeight+"px"); 
    
     sharkPopUp.setAttribute("id",i);    
