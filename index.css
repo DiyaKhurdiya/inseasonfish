@@ -1,18 +1,23 @@
-/* @media screen and (max-width: 768px) {
- 
-.image1 {
-  position: relative;
-  width: 70vw;
+@media only screen and (max-width: 768px){
+  .img.trigger{
+    width: 100vw;
+    height: 80vh;
+  }
 }
- 
-} */
 
-/* Total height of Ocean Container - 67824px
-Number of sharks = 70
-There is 955.2676px or 955px for each shark
-
-Accounting some free space, say the space of 71 more sharks
-Each division required will have 477.6338px or 478px */
+@media only screen and (max-width: 768px){
+  .image1{
+    position: static !important;
+    margin: auto;
+    width: 100vw !important;
+  }
+  p{
+    position: static !important;
+    margin: auto;
+    text-align: center;
+    padding-top: 50px;
+  }
+}
 
 html{
   height: 100%;
@@ -159,7 +164,7 @@ p {
 
 .img{
   position: absolute;
-  height: 478px;
+  height: 378px;
   width: 700px;
 }
 
@@ -296,11 +301,18 @@ p {
   padding: 20px;
   border-radius: 10px;
   font-size: 18px;
+  height: 50px;
+  width: 50px;
 }
 #top-button:hover {
   background-color: #152f33;
 }
 
+#up{
+  position: absolute;
+  top: 0;
+  left: 0;
+}
 
 /* 
 .popup {

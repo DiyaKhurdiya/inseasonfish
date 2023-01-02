@@ -790,6 +790,10 @@ data=[
 // };
 // backToTopButton.addEventListener("click", goToTop)
 
+if(window.innerWidth<=768){
+  screen.orientation.lock("landscape-primary")
+}
+
 const pixels_per_meter = 100;
 
 const ocean_height = document.getElementById("ocean-container").offsetHeight;
@@ -855,7 +859,7 @@ function displayShark(sharkData){
     }
    
     sharkDiv.classList.add("row","justify-content-"+align) 
-    sharkDivCol.classList.add("col-6");
+    sharkDivCol.classList.add("col-lg-6")
     sharkImg.classList.add("img","trigger");
     sharkName.classList.add("p","trigger");
     sharkName.id = i;
@@ -886,13 +890,24 @@ function displayShark(sharkData){
       document.getElementById("sunlight-zone").appendChild(sharkDiv);
     }
 
-
   }
   
 };
 
 displayShark(data);
 
+window.onresize = function(e) {
+  const sharkElements = document.getElementsByClassName("img")
+  for (let i = 0; i < sharkElements.length; i++) {
+    const ele = sharkElements[i];
+    if (ele.getBoundingClientRect().right > screen.width && screen.width>992) {
+     pr=ele.getBoundingClientRect().right - screen.width+"px"
+     ele.parentElement.style.marginRight = pr
+    }else{
+      ele.parentElement.style.marginRight=""
+    }
+};
+}
 
 function PopUp(div_ID){
   const shark = data[div_ID]
@@ -903,7 +918,7 @@ function PopUp(div_ID){
   renderer.querySelector(".name").innerHTML = shark["Name"];
   renderer.querySelector(".sci_name").innerHTML = shark["Scientific Name"];
   renderer.querySelector(".range").innerHTML = shark["Range(in meters)"];
-  renderer.querySelector(".size").innerHTML = shark["Size"] + " CM";
+  renderer.querySelector(".size").innerHTML = shark["Size"] + " M";
   renderer.querySelector(".hab").innerHTML = shark["Origin"];
   renderer.querySelector(".fun").innerHTML = shark["Description"];
   
