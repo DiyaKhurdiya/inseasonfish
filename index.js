@@ -890,6 +890,11 @@ function displayShark(sharkData){
       document.getElementById("sunlight-zone").appendChild(sharkDiv);
     }
 
+    if (sharkImg.getBoundingClientRect().right > window.innerWidth && screen.width>992) {
+      pr=sharkImg.getBoundingClientRect().right - window.innerWidth+"px"
+      sharkDivCol.style.marginRight = pr
+     }
+
   }
   
 };
@@ -900,8 +905,8 @@ window.onresize = function(e) {
   const sharkElements = document.getElementsByClassName("img")
   for (let i = 0; i < sharkElements.length; i++) {
     const ele = sharkElements[i];
-    if (ele.getBoundingClientRect().right > screen.width && screen.width>992) {
-     pr=ele.getBoundingClientRect().right - screen.width+"px"
+    if (ele.getBoundingClientRect().right > window.innerWidth && screen.width>992) {
+     pr=ele.getBoundingClientRect().right - window.innerWidth+"px"
      ele.parentElement.style.marginRight = pr
     }else{
       ele.parentElement.style.marginRight=""
