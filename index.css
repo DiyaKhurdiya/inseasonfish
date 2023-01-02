@@ -29,16 +29,10 @@ body {
   font-family: Roboto, sans-serif;
   overflow-y: auto;
   overflow-x: hidden;
-  /* background-image: url("./assets/sharkposter-bg.jpg"); */
-  /* background-size: cover; */
-  /* background-color: lightblue; */
   max-width: 100%;
-  /* background-repeat: no-repeat; */
 }
 
 
-/* height: 1902px; */
-/* display: inline; */
 .image {
   background-image: url('./assets/sharkPoster_header_01.jpg');
   height: 1000px;
@@ -98,12 +92,9 @@ p {
   position: relative;
   top: 120px;
   left: 100px;
-  font-size: 1.5rem;
-  /* margin-left: 120px; */
+  font-size: 1.1rem;
   width: 60vw;
-  /* margin-right: 700px; */
-  font-family: 'Times New Roman', Times, serif;
-  
+  font-family: 'Times New Roman', Times, serif
 }
 
 .first-page-offset div{
@@ -124,14 +115,6 @@ p {
   opacity: 0;
   color: white;
 }
-
-/* .marking{
-  color: white;
-  position: relative;
-  top: 1000px;
-  margin-left: 8px;
-  width: 100px;
-} */
 
 #sunlight-zone {
   height: 20000px;
@@ -313,6 +296,14 @@ p {
   top: 0;
   left: 0;
 }
+
+.shark-name {
+  font-family: 'Open Sans', sans-serif;
+  padding-left: 250px;
+  color: white;
+  font-size: 20px;
+}
+
 
 /* 
 .popup {

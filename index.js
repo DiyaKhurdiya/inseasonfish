@@ -843,12 +843,14 @@ function displayShark(sharkData){
     const sharkHeight = (firstPageHeight+(sharkRange*pixels_per_meter)+(500*i)/pixels_per_meter) - 478/2;
 
     const rand_one = Math.random();
-    const sharkName = document.createElement("p");
+
     const sharkDiv = document.createElement("div");
     const sharkDivCol = document.createElement("div");
+    const sharkName = document.createElement("div");
     const sharkImg = document.createElement("img");
     const sharkPopUp = document.createElement("div");
     sharkName.innerText = shark["Name"];
+
     sharkDiv.id=i;
 
     let align="start";
@@ -859,27 +861,27 @@ function displayShark(sharkData){
     }
    
     sharkDiv.classList.add("row","justify-content-"+align) 
-    sharkDivCol.classList.add("col-lg-6")
+    sharkDivCol.classList.add("col-lg-6");
+    sharkName.classList.add("img","trigger","shark-name");
     sharkImg.classList.add("img","trigger");
-    sharkName.classList.add("p","trigger");
     sharkName.id = i;
+    sharkName.innerHTML = shark["Name"].toUpperCase();
+    sharkName.setAttribute("onclick","PopUp(this.id)");
+    sharkName.setAttribute("data-bs-toggle","modal");
+    sharkName.setAttribute("data-bs-target","#popUp");
+    sharkName.setAttribute("style",`top:${sharkHeight+100}px`);
     sharkImg.id = i;
     sharkImg.setAttribute("onclick","PopUp(this.id)");
-    sharkName.setAttribute("onclick","PopUp(this.id)");
     sharkImg.setAttribute("src",shark["Image"]);
-  
-    sharkName.setAttribute("data-bs-toggle","modal");
     sharkImg.setAttribute("data-bs-toggle","modal");
     sharkImg.setAttribute("data-bs-target","#popUp");
-    sharkName.setAttribute("data-bs-target","#popUp");
+    // sharkImg.setAttribute("loading","lazy")
     sharkImg.setAttribute("style","top:"+sharkHeight+"px"); 
-    // sharkName.setAttribute("style","top:"+(sharkHeight-2000)+"px"); 
    
     sharkPopUp.setAttribute("id",i);    
-    // const textNode = document.createTextNode(shark["Name"]);
-    // sharkName.appendChild(textNode);
+
+    sharkDivCol.appendChild(sharkName);
     sharkDivCol.appendChild(sharkImg);
-    // sharkDivCol.appendChild(sharkName);
     sharkDiv.appendChild(sharkDivCol);
     
     if(sharkRange>=200 && sharkRange<1000){
@@ -956,7 +958,6 @@ function goTop() {
 // document.addEventListener(
 //   "click",
 //   function (event) {
-//     // if event doesn't have the correct selector, end task
 //     if (
 //       event.target.matches("popup") ||
 //       event.target.closest(".popup") ||
