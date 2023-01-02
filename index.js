@@ -799,22 +799,6 @@ const pixels_per_meter = 100;
 const ocean_height = document.getElementById("ocean-container").offsetHeight;
 
 
-
-// document.getElementById("depth-bar").style.height = (ocean_height-500).toString()+"px";
-const depth_bar_height = document.getElementById("depth-bar").offsetHeight;
-const marking = document.getElementById("depth-bar").lastChild
-
-for (let i = 0; i < depth_bar_height/pixels_per_meter; i=i+10) {
-  if(i>0){
-    const clone = marking.cloneNode()
-    clone.textContent=i+" meters"
-    clone.style.position = "absolute";
-    clone.style.top=(i+(i-1)*pixels_per_meter).toString()+"px" 
-    document.getElementById("depth-bar").appendChild(clone)
-  }
-}
-
-
 const MIN_DEPTH = 0;
 const MAX_DEPTH = 250000;
 const firstPageHeight = document.getElementById("sunlight-zone").getBoundingClientRect().top + window.scrollY;
