@@ -145,11 +145,11 @@ p {
   /* top: 2550px; */
 }
 
-.img{
+/* .img{
   position: absolute;
   height: 378px;
   width: 700px;
-}
+} */
 
 .ocean-bottom {
   background: linear-gradient(180deg, #ede5ce, #b5ad9a);

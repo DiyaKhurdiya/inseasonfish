@@ -760,36 +760,6 @@ data=[
   }
 ]
 
-// const showOnPx = 5000;
-// const backToTopButton = document.querySelector(".back-to-top")
-
-// const scrollContainer = () => {
-//   return document.documentElement || document.body;
-// };
-
-// document.addEventListener("scroll", () => {
-//   if (scrollContainer().scrollTop > showOnPx) {
-//     backToTopButton.classList.remove("hidden")
-//   } else {
-//     backToTopButton.classList.add("hidden")
-//   }
-// })
-
-// document.addEventListener("scroll", () => {
-//   if (scrollContainer().scrollTop > showOnPx) {
-//     backToTopButton.classList.remove("hidden")
-//   } else {
-//     backToTopButton.classList.add("hidden")
-//   }
-// })
-
-// const goToTop = () => {
-//   document.body.scrollIntoView({
-//     behavior: "smooth",
-//   });
-// };
-// backToTopButton.addEventListener("click", goToTop)
-
 if(window.innerWidth<=768){
   screen.orientation.lock("landscape-primary")
 }
@@ -818,7 +788,6 @@ $(document).scroll(() => {
   }
   $(".depth-line span").text(depthValue)
 })
-
 
 function displayShark(sharkData){
   for (let i = 0; i < sharkData.length; i++) {
@@ -881,13 +850,47 @@ function displayShark(sharkData){
       sharkDivCol.style.marginRight = pr
      }
 
+     const sharkSize = shark["Size"]
+
+     if(sharkSize<=56.16){
+       sharkImg.style.width = "400px";
+       sharkImg.style.height = "216px";
+     }else if(sharkSize<=83.6){
+       sharkImg.style.width = "500px";
+       sharkImg.style.height = "270px";
+     }else if(sharkSize<=104){
+       sharkImg.style.width = "600px";
+       sharkImg.style.height = "324px";
+     }else if(sharkSize<=139.6){
+       sharkImg.style.width = "700px";
+       sharkImg.style.height = "378px";
+     }else if(sharkSize<=182){
+       sharkImg.style.width = "750px";
+       sharkImg.style.height = "405px";
+     }else if(sharkSize<=234.6){
+       sharkImg.style.width= "800px";
+       sharkImg.style.height="432px";
+     }else if(sharkSize<=300){
+       sharkImg.style.width="850px";
+       sharkImg.style.height="460px";
+     }else if(sharkSize<=368){
+       sharkImg.style.width="900px";
+       sharkImg.style.height ="486px";
+     }else if(sharkSize<=446){
+       sharkImg.style.width="950px";
+       sharkImg.style.height="513px";
+     }else{
+       sharkImg.style.width="1000px";
+       sharkImg.style.height="540px";
+     }
+
   }
   
 };
 
 displayShark(data);
 
-window.onresize = function(e) {
+window.onresize = window.onload =  function(e) {
   const sharkElements = document.getElementsByClassName("img")
   for (let i = 0; i < sharkElements.length; i++) {
     const ele = sharkElements[i];
@@ -918,7 +921,6 @@ function PopUp(div_ID){
   const photo_location = shark["Image"];
   document.getElementById("200").src = photo_location;
   
-
 }
 
 
