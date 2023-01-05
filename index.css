@@ -1,7 +1,8 @@
 @media only screen and (max-width: 768px){
   .img.trigger{
-    width: 100vw;
-    height: 80vh;
+    width: 100vw !important;
+    height: 80vh !important;
+    margin: auto;
   }
 }
 

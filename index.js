@@ -760,6 +760,24 @@ data=[
   }
 ]
 
+const isOverlapping = (e1, e2) => {
+  const rect1 = e1 instanceof Element ? e1.getBoundingClientRect() : false;
+  const rect2 = e2 instanceof Element ? e2.getBoundingClientRect() : false;
+  let overlap = false;
+ 
+  if (rect1 && rect2) {
+    overlap = !(
+      rect1.right < rect2.left || 
+      rect1.left > rect2.right || 
+      rect1.bottom < rect2.top || 
+      rect1.top > rect2.bottom
+    );
+    return overlap;  
+  }
+
+  return overlap;
+}
+
 if(window.innerWidth<=768){
   screen.orientation.lock("landscape-primary")
 }
@@ -829,8 +847,8 @@ function displayShark(sharkData){
     sharkImg.setAttribute("data-bs-toggle","modal");
     sharkImg.setAttribute("data-bs-target","#popUp");
     // sharkImg.setAttribute("loading","lazy")
-    sharkImg.setAttribute("style","top:"+sharkHeight+"px"); 
-   
+    sharkImg.setAttribute("style","top:"+sharkHeight+"px; cursor: pointer;"); 
+
     sharkPopUp.setAttribute("id",i);    
 
     sharkDivCol.appendChild(sharkName);
@@ -883,14 +901,37 @@ function displayShark(sharkData){
        sharkImg.style.width="1000px";
        sharkImg.style.height="540px";
      }
-
   }
-  
+
 };
 
 displayShark(data);
 
+
+let e = document.getElementsByClassName("img trigger");
+let l = [];
+for (let i = 0; i < e.length; i++) {
+  const ele = e[i];
+  if(ele.tagName=="IMG"){
+    l.push(ele)
+  }
+}
+
 window.onresize = window.onload =  function(e) {
+
+  for (let i = 0; i < l.length; i++) {
+    if(i!=0){
+      const ele1 = l[i-1];
+      const ele2 = l[i];
+
+      if(isOverlapping(ele1,ele2)){
+        console.log(ele1,ele2)
+        ele1.style.top=(parseInt(ele1.style.top)-145)+"px";
+        ele2.style.bottom=(parseInt(ele2.style.bottom)+145)+"px"
+      }
+    }  
+  }
+
   const sharkElements = document.getElementsByClassName("img")
   for (let i = 0; i < sharkElements.length; i++) {
     const ele = sharkElements[i];
@@ -939,6 +980,7 @@ function goTop() {
   document.body.scrollTop = 0; // Safari
   document.documentElement.scrollTop = 0; // Chrome, Firefox, IE and Opera
 }
+
 
 
 // document.addEventListener(
