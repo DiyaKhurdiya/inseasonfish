@@ -1,4 +1,4 @@
-@media only screen and (max-width: 992px){
+@media only screen and (max-width: 100%){
   .img.trigger{
     width: 100vw !important;
     margin: auto;
