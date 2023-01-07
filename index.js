@@ -807,6 +807,10 @@ $(document).scroll(() => {
   $(".depth-line span").text(depthValue)
 })
 
+// if((depthValue) > '800') {
+   
+// }
+
 function displayShark(sharkData){
   for (let i = 0; i < sharkData.length; i++) {
     const shark = sharkData[i];
@@ -840,7 +844,7 @@ function displayShark(sharkData){
     sharkName.setAttribute("onclick","PopUp(this.id)");
     sharkName.setAttribute("data-bs-toggle","modal");
     sharkName.setAttribute("data-bs-target","#popUp");
-    sharkName.setAttribute("style",`top:${sharkHeight+100}px`);
+    sharkName.setAttribute("style",`top:${sharkHeight+40}px`);
     sharkImg.id = i;
     sharkImg.setAttribute("onclick","PopUp(this.id)");
     sharkImg.setAttribute("src",shark["Image"]);
@@ -871,35 +875,35 @@ function displayShark(sharkData){
      const sharkSize = shark["Size"]
 
      if(sharkSize<=56.16){
-       sharkImg.style.width = "400px";
-       sharkImg.style.height = "216px";
-     }else if(sharkSize<=83.6){
        sharkImg.style.width = "500px";
-       sharkImg.style.height = "270px";
-     }else if(sharkSize<=104){
+       sharkImg.style.height = "316px";
+     }else if(sharkSize<=83.6){
        sharkImg.style.width = "600px";
-       sharkImg.style.height = "324px";
-     }else if(sharkSize<=139.6){
+       sharkImg.style.height = "370px";
+     }else if(sharkSize<=104){
        sharkImg.style.width = "700px";
-       sharkImg.style.height = "378px";
+       sharkImg.style.height = "424px";
+     }else if(sharkSize<=139.6){
+       sharkImg.style.width = "800px";
+       sharkImg.style.height = "478px";
      }else if(sharkSize<=182){
-       sharkImg.style.width = "750px";
-       sharkImg.style.height = "405px";
+       sharkImg.style.width = "850px";
+       sharkImg.style.height = "505px";
      }else if(sharkSize<=234.6){
-       sharkImg.style.width= "800px";
-       sharkImg.style.height="432px";
+       sharkImg.style.width= "900px";
+       sharkImg.style.height="532px";
      }else if(sharkSize<=300){
-       sharkImg.style.width="850px";
-       sharkImg.style.height="460px";
-     }else if(sharkSize<=368){
-       sharkImg.style.width="900px";
-       sharkImg.style.height ="486px";
-     }else if(sharkSize<=446){
        sharkImg.style.width="950px";
-       sharkImg.style.height="513px";
-     }else{
+       sharkImg.style.height="560px";
+     }else if(sharkSize<=368){
        sharkImg.style.width="1000px";
-       sharkImg.style.height="540px";
+       sharkImg.style.height ="586px";
+     }else if(sharkSize<=446){
+       sharkImg.style.width="1050px";
+       sharkImg.style.height="613px";
+     }else{
+       sharkImg.style.width="1100px";
+       sharkImg.style.height="640px";
      }
   }
 
