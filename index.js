@@ -14,7 +14,7 @@ data=[
     "Name": "Indian swellshark",
     "Scientific Name": "Cephaloscyllium silasi",
     "Range(in meters)": "10 - 13m",
-    "Range(in pixels)": 36,
+    "Range(in pixels)": 20,
     "Origin": "They occur in deep benthic areas and are demersal on the continental slope",
     "Description": "Like it's name suggests, the Indian swellshark can expand its body to make it appear larger to predators!",
     "Scale": 1.57,
@@ -36,7 +36,7 @@ data=[
     "Name": "Slender weasel shark",
     "Scientific Name": "Paragaleus randalli",
     "Range(in meters)": "590 m",
-    "Range(in pixels)": 48.3,
+    "Range(in pixels)": 45,
     "Origin": "Inshore on the inner continental shelf",
     "Description": "Slender weasel sharks were first described in 1996 and are often confused with other weasel sharks even though they are consumed widely throughout their range.",
     "Scale": 2.1,
@@ -124,7 +124,7 @@ data=[
     "Name": "Whitespotted bamboo shark",
     "Scientific Name": "Chiloscyllium plagiosum",
     "Range(in meters)": "Upto 183 m",
-    "Range(in pixels)": 172,
+    "Range(in pixels)": 170,
     "Origin": "Occurs in shallow coastal inshore coral reef habitats; it is nocturnal and rest by day in reef crevices",
     "Description": "Whitespotted bamboo sharks are little known however, they are known to adapt well in captivity and is commonly seen in public aquariums.",
     "Scale": 4.13,
@@ -135,7 +135,7 @@ data=[
     "Name": "Velvet dogfish",
     "Scientific Name": "Zameus squamulosus",
     "Range(in meters)": "upto 100m",
-    "Range(in pixels)": 84,
+    "Range(in pixels)": 82,
     "Origin": "Atlantic, Indian and Pacific tropical oceans",
     "Description": "There are only isolated occurrence reports for this species from Indian waters",
     "Scale": 3.65,
@@ -333,7 +333,7 @@ data=[
     "Name": "Spot-tail shark",
     "Scientific Name": "Carcharhinus sorrah",
     "Range(in meters)": "Range",
-    "Range(in pixels)": 160,
+    "Range(in pixels)": 161,
     "Origin": "Reef-associated and common near islands and reefs",
     "Description": "Spot-tail sharks favouriite diet consists of bony fishes but they also like eating crustaceans and cepahlopods.",
     "Scale": 6.96,
@@ -355,7 +355,7 @@ data=[
     "Name": "Gulper shark",
     "Scientific Name": "Centrophorus granulosus",
     "Range(in meters)": "1-130 m",
-    "Range(in pixels)": 170,
+    "Range(in pixels)": 174,
     "Origin": "They are demersal and benthopelagic on continental and insular shelves",
     "Description": "Gulper sharks have a gestation period of 2 years and a lot of information is yet to be known.",
     "Scale": 7.39,
@@ -366,7 +366,7 @@ data=[
     "Name": "Milk shark",
     "Scientific Name": "Rhizoprionodon acutus",
     "Range(in meters)": "145-2400 m",
-    "Range(in pixels)": 175,
+    "Range(in pixels)": 179,
     "Origin": "Found on continental shelves close to sandy beaches and sometime in estuaries",
     "Description": "Milk sharks sometimes enter freshwater habitats and we are not sure why they do so!",
     "Scale": 7.61,
@@ -619,7 +619,7 @@ data=[
     "Name": "Oceanic whitetip shark",
     "Scientific Name": "Carcharhinus longimanus",
     "Range(in meters)": "170 m",
-    "Range(in pixels)": 400,
+    "Range(in pixels)": 143,
     "Origin": "Found in open ocean. In epipelagic tropical and sub-tropical waters",
     "Description": "Oceanic whitetip sharks  are one of the most threatened sharks which come under Appendix II of the CITES. They are sometimes found to hang around pilot whales.",
     "Scale": 17.39,
@@ -652,7 +652,7 @@ data=[
     "Name": "Pelagic thresher shark",
     "Scientific Name": "Alopias pelagicus",
     "Range(in meters)": "183-450 m",
-    "Range(in pixels)": 428,
+    "Range(in pixels)": 439,
     "Origin": "Found in warm offshore surface waters of open ocean.",
     "Description": "Pelagic thresher sharks use their long tail to whip small fish and squid, and stun them. Then the shark can quickly make a U-turn and gobble them up! This is the smallest of the 3 thresher sharks that we find in India",
     "Scale": 18.61,
@@ -760,23 +760,23 @@ data=[
   }
 ]
 
-const isOverlapping = (e1, e2) => {
-  const rect1 = e1 instanceof Element ? e1.getBoundingClientRect() : false;
-  const rect2 = e2 instanceof Element ? e2.getBoundingClientRect() : false;
-  let overlap = false;
+// const isOverlapping = (e1, e2) => {
+//   const rect1 = e1 instanceof Element ? e1.getBoundingClientRect() : false;
+//   const rect2 = e2 instanceof Element ? e2.getBoundingClientRect() : false;
+//   let overlap = false;
  
-  if (rect1 && rect2) {
-    overlap = !(
-      rect1.right < rect2.left || 
-      rect1.left > rect2.right || 
-      rect1.bottom < rect2.top || 
-      rect1.top > rect2.bottom
-    );
-    return overlap;  
-  }
+//   if (rect1 && rect2) {
+//     overlap = !(
+//       rect1.right < rect2.left || 
+//       rect1.left > rect2.right || 
+//       rect1.bottom < rect2.top || 
+//       rect1.top > rect2.bottom
+//     );
+//     return overlap;  
+//   }
 
-  return overlap;
-}
+//   return overlap;
+// }
 
 if(window.innerWidth<=768){
   screen.orientation.lock("landscape-primary")
@@ -844,7 +844,7 @@ function displayShark(sharkData){
     sharkName.setAttribute("onclick","PopUp(this.id)");
     sharkName.setAttribute("data-bs-toggle","modal");
     sharkName.setAttribute("data-bs-target","#popUp");
-    sharkName.setAttribute("style",`top:${sharkHeight+40}px`);
+    sharkName.setAttribute("style",`top:${sharkHeight+100}px`);
     sharkImg.id = i;
     sharkImg.setAttribute("onclick","PopUp(this.id)");
     sharkImg.setAttribute("src",shark["Image"]);
@@ -902,8 +902,8 @@ function displayShark(sharkData){
        sharkImg.style.width="1050px";
        sharkImg.style.height="613px";
      }else{
-       sharkImg.style.width="1100px";
-       sharkImg.style.height="640px";
+       sharkImg.style.width="1000px";
+       sharkImg.style.height="540px";
      }
   }
 
