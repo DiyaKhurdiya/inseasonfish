@@ -1,7 +1,6 @@
-@media only screen and (max-width: 768px){
+@media only screen and (max-width: 992px){
   .img.trigger{
     width: 100vw !important;
-    height: 80vh !important;
     margin: auto;
   }
 }
@@ -22,6 +21,8 @@
 
 html{
   height: 100%;
+  width: 100%;
+  overflow-x: hidden;
 }
 
 body {
@@ -29,8 +30,8 @@ body {
   padding: 0;
   font-family: Roboto, sans-serif;
   overflow-y: auto;
-  overflow-x: hidden;
-  max-width: 100%;
+  overflow-x: hidden !important;
+  max-width: 100% !important;
 }
 
 

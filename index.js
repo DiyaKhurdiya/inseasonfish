@@ -832,7 +832,7 @@ function displayShark(sharkData){
     }
    
     sharkDiv.classList.add("row","justify-content-"+align) 
-    sharkDivCol.classList.add("col-lg-6");
+    sharkDivCol.classList.add("col-lg-6","col");
     sharkName.classList.add("img","trigger","shark-name");
     sharkImg.classList.add("img","trigger");
     sharkName.id = i;
@@ -846,7 +846,7 @@ function displayShark(sharkData){
     sharkImg.setAttribute("src",shark["Image"]);
     sharkImg.setAttribute("data-bs-toggle","modal");
     sharkImg.setAttribute("data-bs-target","#popUp");
-    // sharkImg.setAttribute("loading","lazy")
+    sharkImg.setAttribute("loading","lazy")
     sharkImg.setAttribute("style","top:"+sharkHeight+"px; cursor: pointer;"); 
 
     sharkPopUp.setAttribute("id",i);    
@@ -907,30 +907,7 @@ function displayShark(sharkData){
 
 displayShark(data);
 
-
-let e = document.getElementsByClassName("img trigger");
-let l = [];
-for (let i = 0; i < e.length; i++) {
-  const ele = e[i];
-  if(ele.tagName=="IMG"){
-    l.push(ele)
-  }
-}
-
 window.onresize = window.onload =  function(e) {
-
-  for (let i = 0; i < l.length; i++) {
-    if(i!=0){
-      const ele1 = l[i-1];
-      const ele2 = l[i];
-
-      if(isOverlapping(ele1,ele2)){
-        console.log(ele1,ele2)
-        ele1.style.top=(parseInt(ele1.style.top)-145)+"px";
-        ele2.style.bottom=(parseInt(ele2.style.bottom)+145)+"px"
-      }
-    }  
-  }
 
   const sharkElements = document.getElementsByClassName("img")
   for (let i = 0; i < sharkElements.length; i++) {
